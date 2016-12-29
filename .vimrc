@@ -18,6 +18,12 @@ map <F3> :source ~/vim_session <cr>   	" And load session with F3
 
 let mapleader = ","
 
+" Map 'jk' to the Escape character when in Insert mode
+inoremap jk <Esc> 
+" ^d for forward delete-char
+noremap <C-d> <Del>
+nnoremap ; :
+
 " Command to manually open NERDTree
 nmap <Leader>n :NERDTreeToggle<CR>
 " Open NERDTree automatically when Vim starts on opening a directory
@@ -33,10 +39,10 @@ let NERDTreeShowHidden=1
 " Show line numbers?
 " set number
 
-" Map 'jk' to the Escape character when in Insert mode
-inoremap jk <Esc> 
-
-nnoremap ; :
+" Jump to definition using Tern (JavaScript Only)
+" YouCompleteMe's implementation is not working, at least for JS
+" See :h youcompleteme-goto-commands
+nnoremap <leader>jd :TernDef<CR>
 
 " use system clipboard by default instead of '+' or '*' registers for copying & pasting
 set clipboard+=unnamedplus
@@ -59,10 +65,6 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" escape terminal mode with <Esc> key
-if exists(':terminal')
-  tnoremap <Esc> <C-\><C-n>
-endif
 
 " open new split panes to right and bottom, more natural than Vim’s default
 set splitbelow
@@ -71,6 +73,27 @@ set splitright
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
   set mouse=a
+endif
+
+" neovim
+if has('nvim')
+  " escape terminal mode with 'jk' or <Esc>
+  tnoremap jk <C-\><C-n>
+  tnoremap <Esc> <C-\><C-n>
+  " Use these only with emacs bindings in the terminal 
+  " tnoremap <C-h> <C-\><C-n><C-w>h
+  " tnoremap <C-j> <C-\><C-n><C-w>j
+  " tnoremap <C-k> <C-\><C-n><C-w>k
+  " tnoremap <C-l> <C-\><C-n><C-w>l
+
+  " vmap <Leader>e y<C-l>p
+  " nmap <Leader>e vipy<C-l>p
+  nnoremap <Leader>t :e term://zsh<CR>
+  " :vs | term<CR> works great in nvim for new terminal in vertical window
+  " starting in INSERT mode, but when run by the shell at startup the pipe
+  " causes a parse error, so we settle for:
+  nnoremap <Leader>vt :vs term://zsh<CR>
+  " nmap <Leader>l :let @r = '(enter! ' . '"' . expand("%") . '")'<CR><C-l>"rpa<CR>
 endif
 
 " Convenient command to see the difference between the current buffer and the
