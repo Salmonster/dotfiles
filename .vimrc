@@ -3,11 +3,14 @@
 set nocompatible
 
 " PLUGINS
+" Remember to get vim-plug @ https://github.com/junegunn/vim-plug 
 call plug#begin()
-" Utils
 Plug 'scrooloose/nerdtree'
+" requires manual installation to prevent timeout & to specify language support
+" options
 Plug '~/.vim/plugged/YouCompleteMe'
 Plug 'Raimondi/delimitMate'
+" requires npm install
 Plug 'ternjs/tern_for_vim'
 " Add plugins to &runtimepath
 call plug#end()
@@ -21,7 +24,7 @@ let mapleader = ","
 " Map 'jk' to the Escape character when in Insert mode
 inoremap jk <Esc> 
 " ^d for forward delete-char
-noremap <C-d> <Del>
+inoremap <C-d> <Del>
 nnoremap ; :
 
 " Command to manually open NERDTree
@@ -95,6 +98,9 @@ if has('nvim')
   nnoremap <Leader>vt :vs term://zsh<CR>
   " nmap <Leader>l :let @r = '(enter! ' . '"' . expand("%") . '")'<CR><C-l>"rpa<CR>
 endif
+
+" Trigger autoread when changing buffers or coming back to vim.
+au FocusGained,BufEnter * :silent! !
 
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
