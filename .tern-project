@@ -1,0 +1,20 @@
+{
+	"libs": [
+        	 "browser",
+		 "chai",
+		 "ecmascript",
+	         "underscore",
+        	 "jquery"
+         	],
+	"loadEagerly": [
+		 ""
+	  ],
+         "plugins": {
+         	"node": {},
+		"modules": {},
+		"es_modules": {},
+		"requirejs": {},
+		"angular": {}
+	 },
+	 "ecmaVersion": 6
+}
