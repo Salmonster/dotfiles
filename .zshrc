@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$PATH
+export PATH="/usr/local/opt/openssl/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/$USER/.oh-my-zsh
@@ -8,7 +9,7 @@ export ZSH=/Users/$USER/.oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="crunch"
-# ^>^>^ So far, 'crunch' is winning......
+# ^>^>^ So far, 'crunch' is winning...... (single line prompt, timestamp, vim mode compliant, but not ^d compliant)
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -76,7 +77,7 @@ fi
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# Vi mode 
+# Vi mode
 bindkey -v
 # Map alternate escape key from insert to command mode
 bindkey jk vi-cmd-mode
@@ -109,6 +110,7 @@ export RSAPROXY_USERNAME=salm0028
 
 alias ls='ls -GFh'
 alias cds='cd ~/projects/support-service; . ../venv/bin/activate'
+alias cdss='cd ~/Documents/GitHubRepos/support-service; . ../venv/bin/activate'
 alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
@@ -117,4 +119,3 @@ alias swapdir='cd ~/.local/share/nvim/swap/'
 
 # useful for killing a zombie running on a socket; use like => `killport 3000`
 function killport { kill $(lsof -i :$@ | tail -n 1 | cut -f 5 -d ' '); }
-
