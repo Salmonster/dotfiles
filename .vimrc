@@ -50,7 +50,7 @@ nnoremap <leader>jd :TernDef<CR>
 " use system clipboard by default instead of '+' or '*' registers for copying & pasting
 set clipboard+=unnamedplus
 
-" allow backspacing over everything in insert mode
+" Allow backspacing over everything in insert mode
 set backspace=indent,eol,start
  
 set history=50          " keep 50 lines of command line history
@@ -59,17 +59,24 @@ set showcmd             " display incomplete commands
 set incsearch           " do incremental searching
 set autoindent          " always set autoindenting on
 
-" turn off highlighting after search with <Esc> key (note that 'n' & 'N' will return highlighted results)
+" Turn off highlighting after search with <Esc> key (note that 'n' & 'N' will return highlighted results)
 nnoremap <silent> <esc> :noh<cr>
 
-" easy navigation between splits to save a keystroke
+" Easy navigation between splits to save a keystroke
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Move across display lines, not physical lines
+noremap j gj
+noremap gj j
+noremap k gk
+noremap gk k
+noremap <down> gj
+noremap <up> gk
 
-" open new split panes to right and bottom, more natural than Vim’s default
+" Open new split panes to right and bottom, more natural than Vim’s default
 set splitbelow
 set splitright
 
