@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/$USER/.oh-my-zsh
@@ -7,9 +7,8 @@ export ZSH=/Users/$USER/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="random"
-# ^>^>^ So far, 'xiong-chiamiov-plus' is winning......
-# 'crunch' looks good
+ZSH_THEME="crunch"
+# ^>^>^ So far, 'crunch' is winning......
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -86,7 +85,7 @@ bindkey jk vi-cmd-mode
 bindkey -M viins '^[.' insert-last-word
 
 bindkey '^h' backward-delete-char
-bindkey '^d' delete-char
+bindkey '^d' forward-delete-char
 bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
 bindkey '^p' up-history
@@ -105,9 +104,13 @@ export KEYTIMEOUT=10
 
 # Personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes.
+export RSAPROXY_GATEWAY=auth.ord1.gateway.rackspace.com
+export RSAPROXY_USERNAME=salm0028
+
 alias ls='ls -GFh'
+alias cds='cd ~/projects/support-service; . ../venv/bin/activate'
 alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
-
+alias ldapsearch='ldapsearch -h auth.edir.rackspace.com -x'
 
