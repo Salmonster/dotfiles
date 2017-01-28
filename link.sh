@@ -1,7 +1,8 @@
 #!/bin/zsh
 ln -siv $(pwd)/.vimrc ~/.vimrc
 ln -siv $(pwd)/.zshrc ~/.zshrc
-ln -siv $(pwd)/.tern-project ~/.tern-project
+ln -siv $(pwd)/.tern-config ~/.tern-config
+ln -siv $(pwd)/.ctags ~/.ctags
 # ln -siv $(pwd)/.tmux.conf ~/.tmux.conf
 # ln -siv $(pwd)/.gitconfig ~/.gitconfig
 #
