@@ -3,13 +3,13 @@
 set nocompatible
 
 " PLUGINS
-" Remember to get vim-plug @ https://github.com/junegunn/vim-plug 
-call plug#begin()
+" vim-plug => see ~/.vim/autoload/plug.vim, https://github.com/junegunn/vim-plug 
+call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
-" requires manual installation to prevent timeout & to specify language support
-" options
+" requires manual installation to prevent timeout & to specify language support options
 Plug '~/.vim/plugged/YouCompleteMe'
 Plug 'Raimondi/delimitMate'
+Plug 'szw/vim-tags'
 " requires npm install
 Plug 'ternjs/tern_for_vim'
 " Add plugins to &runtimepath
