@@ -58,6 +58,7 @@ set ruler               " show the cursor position all the time
 set showcmd             " display incomplete commands 
 set incsearch           " do incremental searching
 set autoindent          " always set autoindenting on
+set ignorecase		" ignore letter casing in searches
 
 " Turn off highlighting after search with <Esc> key (note that 'n' & 'N' will return highlighted results)
 nnoremap <silent> <esc> :noh<cr>
