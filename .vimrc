@@ -1,19 +1,27 @@
-" Use Vim settings, rather than Vi settings
-" This must be first, because it changes other options as a side effect.
-set nocompatible
+set t_Co=256
+set nocompatible 	" be iMproved
 
-" PLUGINS
-" vim-plug => see ~/.vim/autoload/plug.vim, https://github.com/junegunn/vim-plug 
+" remember to load any remote plugins properly
+" :h remote-plugin-manifest
+
+" vim-plug => see ~/.vim/autoload/plug.vim
 call plug#begin('~/.vim/plugged')
+
+" utils
 Plug 'scrooloose/nerdtree'
-" requires manual installation to prevent timeout & to specify language support options
+Plug 'ctrlpvim/ctrlp.vim'		" see :h ctrlp-mappings
 Plug '~/.vim/plugged/YouCompleteMe'
 Plug 'Raimondi/delimitMate'
 Plug 'szw/vim-tags'
-" requires npm install
-Plug 'ternjs/tern_for_vim'
+
+" style
+Plug 'w0ng/vim-hybrid'
+
 " Add plugins to &runtimepath
 call plug#end()
+
+set background=dark
+colorscheme hybrid
 
 
 map <F2> :mksession! ~/vim_session <cr> " Quick write session with F2
@@ -39,8 +47,8 @@ let NERDTreeShowHidden=1
 " syntax on
 " filetype plugin indent on
 
-" Show line numbers?
-" set number
+" Show line numbers
+set number
 
 " Jump to definition using Tern (JavaScript Only)
 " YouCompleteMe's implementation is not working, at least for JS
@@ -77,11 +85,10 @@ noremap gk k
 noremap <down> gj
 noremap <up> gk
 
-" Open new split panes to right and bottom, more natural than Vim’s default
 set splitbelow
 set splitright
 
-" In many terminal emulators the mouse works just fine, thus enable it.
+" enable mouse
 if has('mouse')
   set mouse=a
 endif
