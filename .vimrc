@@ -12,6 +12,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'		" see :h ctrlp-mappings
 Plug '~/.vim/plugged/YouCompleteMe'
 Plug 'Raimondi/delimitMate'
+Plug 'vim-airline/vim-airline'
 Plug 'szw/vim-tags'
 
 " style
@@ -30,7 +31,7 @@ map <F3> :source ~/vim_session <cr>   	" And load session with F3
 let mapleader = ","
 
 " Map 'jk' to the Escape character when in Insert mode
-inoremap jk <Esc> 
+inoremap jk <Esc>
 " ^d for forward delete-char
 inoremap <C-d> <Del>
 nnoremap ; :
@@ -43,7 +44,7 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 " Show hidden files in the tree by default
 let NERDTreeShowHidden=1
 
-" Syntax highlighting & filetype detection - now handled by vim-plug 
+" Syntax highlighting & filetype detection - now handled by vim-plug
 " syntax on
 " filetype plugin indent on
 
@@ -60,10 +61,10 @@ set clipboard+=unnamedplus
 
 " Allow backspacing over everything in insert mode
 set backspace=indent,eol,start
- 
+
 set history=50          " keep 50 lines of command line history
 set ruler               " show the cursor position all the time
-set showcmd             " display incomplete commands 
+set showcmd             " display incomplete commands
 set incsearch           " do incremental searching
 set autoindent          " always set autoindenting on
 set ignorecase		" ignore letter casing in searches
@@ -98,7 +99,7 @@ if has('nvim')
   " escape terminal mode with 'jk' or <Esc>
   tnoremap jk <C-\><C-n>
   tnoremap <Esc> <C-\><C-n>
-  " Use these only with emacs bindings in the terminal 
+  " Use these only with emacs bindings in the terminal
   " tnoremap <C-h> <C-\><C-n><C-w>h
   " tnoremap <C-j> <C-\><C-n><C-w>j
   " tnoremap <C-k> <C-\><C-n><C-w>k

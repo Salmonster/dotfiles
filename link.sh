@@ -1,4 +1,5 @@
-#!/bin/zsh
+#!/bin/bash
+
 ln -siv $(pwd)/.vimrc ~/.vimrc
 ln -siv $(pwd)/.zshrc ~/.zshrc
 ln -siv $(pwd)/.ctags ~/.ctags
