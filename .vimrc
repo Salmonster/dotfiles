@@ -14,6 +14,7 @@ Plug '~/.vim/plugged/YouCompleteMe'
 Plug 'Raimondi/delimitMate'
 Plug 'vim-airline/vim-airline'
 Plug 'szw/vim-tags'
+Plug 'jmcantrell/vim-virtualenv'
 
 " style
 Plug 'w0ng/vim-hybrid'
