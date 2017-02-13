@@ -12,6 +12,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'		" see :h ctrlp-mappings
 Plug '~/.vim/plugged/YouCompleteMe'
 Plug 'Raimondi/delimitMate'
+Plug 'easymotion/vim-easymotion'
 Plug 'vim-airline/vim-airline'
 Plug 'szw/vim-tags'
 Plug 'jmcantrell/vim-virtualenv'
@@ -26,19 +27,57 @@ set background=dark
 colorscheme hybrid
 
 
-map <F2> :mksession! ~/vim_session <cr> " Quick write session with F2
-map <F3> :source ~/vim_session <cr>   	" And load session with F3
+map <F2> :mksession! ~/vim_session <CR> 	" Quick write session with F2
+map <F3> :source ~/vim_session <CR>   		" And load session with F3
 
-let mapleader = ","
+let mapleader = "\<space>"
 
 " Map 'jk' to the Escape character when in Insert mode
 inoremap jk <Esc>
 " ^d for forward delete-char
 inoremap <C-d> <Del>
 nnoremap ; :
+" quick save file
+nnoremap <C-s> :w<CR>
 
-" Command to manually open NERDTree
-nmap <Leader>n :NERDTreeToggle<CR>
+
+" easymotion config
+let g:EasyMotion_do_mapping = 0 	" Disable default mappings
+map <Leader> <Plug>(easymotion-prefix)
+
+" <Leader>f{char} to move to {char} (current view only)
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" <Leader>s{char}{char} to move to {char}{char} (current view only)
+nmap <Leader>s <Plug>(easymotion-overwin-f2)
+
+" move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+" search w/easymotion -- use tab/shift+tab to page down/up to view highlighted matches
+map  / <Plug>(easymotion-sn)
+" complete d/y/c/etc. operator with easymotion search result
+omap / <Plug>(easymotion-tn)
+
+" hjkl motions config
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
+let g:EasyMotion_startofline = 0 " keep cursor column with JK motion
+
+" case insensitive search
+let g:EasyMotion_smartcase = 1
+
+
+" NERDTree config
+nmap <Leader>n :NERDTreeToggle<CR>	" manually open NERDTree
 " Open NERDTree automatically when Vim starts on opening a directory
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
@@ -51,11 +90,6 @@ let NERDTreeShowHidden=1
 
 " Show line numbers
 set number
-
-" Jump to definition using Tern (JavaScript Only)
-" YouCompleteMe's implementation is not working, at least for JS
-" See :h youcompleteme-goto-commands
-nnoremap <leader>jd :TernDef<CR>
 
 " use system clipboard by default instead of '+' or '*' registers for copying & pasting
 set clipboard+=unnamedplus
@@ -71,7 +105,7 @@ set autoindent          " always set autoindenting on
 set ignorecase		" ignore letter casing in searches
 
 " Turn off highlighting after search with <Esc> key (note that 'n' & 'N' will return highlighted results)
-nnoremap <silent> <esc> :noh<cr>
+nnoremap <silent> <esc> :noh<CR>
 
 " Easy navigation between splits to save a keystroke
 nnoremap <C-J> <C-W><C-J>
@@ -108,7 +142,6 @@ if has('nvim')
 
   " vmap <Leader>e y<C-l>p
   " nmap <Leader>e vipy<C-l>p
-  nnoremap <Leader>t :e term://zsh<CR>
   " :vs | term<CR> works great in nvim for new terminal in vertical window
   " starting in INSERT mode, but when run by the shell at startup the pipe
   " causes a parse error, so we settle for:
