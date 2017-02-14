@@ -6,6 +6,9 @@ set nocompatible 	" be iMproved
 
 " vim-plug => see ~/.vim/autoload/plug.vim
 call plug#begin('~/.vim/plugged')
+" Syntax highlighting & filetype detection - now handled by vim-plug
+" syntax on
+" filetype plugin indent on
 
 " utils
 Plug 'scrooloose/nerdtree'
@@ -15,7 +18,10 @@ Plug 'Raimondi/delimitMate'
 Plug 'easymotion/vim-easymotion'
 Plug 'vim-airline/vim-airline'
 Plug 'szw/vim-tags'
+
+" language-specific
 Plug 'jmcantrell/vim-virtualenv'
+Plug 'pangloss/vim-javascript'
 
 " style
 Plug 'w0ng/vim-hybrid'
@@ -39,6 +45,11 @@ inoremap <C-d> <Del>
 nnoremap ; :
 " quick save file
 nnoremap <C-s> :w<CR>
+
+
+" vim-javascript config
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
 
 
 " easymotion config
@@ -84,28 +95,33 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 " Show hidden files in the tree by default
 let NERDTreeShowHidden=1
 
-" Syntax highlighting & filetype detection - now handled by vim-plug
-" syntax on
-" filetype plugin indent on
 
-" Show line numbers
+" show line numbers
 set number
 
 " use system clipboard by default instead of '+' or '*' registers for copying & pasting
 set clipboard+=unnamedplus
 
-" Allow backspacing over everything in insert mode
+" allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
+set ignorecase          " ignore letter casing in searches
 set history=50          " keep 50 lines of command line history
 set ruler               " show the cursor position all the time
 set showcmd             " display incomplete commands
 set incsearch           " do incremental searching
 set autoindent          " always set autoindenting on
-set ignorecase		" ignore letter casing in searches
+set smartindent
+set expandtab
+set tabstop=2
+set shiftwidth=2
 
 " Turn off highlighting after search with <Esc> key (note that 'n' & 'N' will return highlighted results)
 nnoremap <silent> <esc> :noh<CR>
+
+" language settings
+au Bufread,BufNewFile *.raml   setfiletype yaml
+au Filetype javascript setl et tabstop=4 shiftwidth=4
 
 " Easy navigation between splits to save a keystroke
 nnoremap <C-J> <C-W><C-J>
