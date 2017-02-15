@@ -113,4 +113,5 @@ alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 alias ldapsearch='ldapsearch -h auth.edir.rackspace.com -x'
+alias swapdir='cd ~/.local/share/nvim/swap//'
 
