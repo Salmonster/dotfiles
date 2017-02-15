@@ -1,12 +1,14 @@
 set t_Co=256
 set nocompatible 	" be iMproved
 
+" to view variable mappings, run => :verbose set variable1? [(variable2)? (variable3)? etc.]
+
 " remember to load any remote plugins properly
 " :h remote-plugin-manifest
 
 " vim-plug => see ~/.vim/autoload/plug.vim
 call plug#begin('~/.vim/plugged')
-" Syntax highlighting & filetype detection - now handled by vim-plug
+" Syntax highlighting & filetype detection now handled by vim-plug
 " syntax on
 " filetype plugin indent on
 
@@ -44,7 +46,11 @@ inoremap jk <Esc>
 inoremap <C-d> <Del>
 nnoremap ; :
 " quick save file
-nnoremap <C-s> :w<CR>
+noremap <C-s>  :w<CR>
+vnoremap <C-s> <C-C>:w<CR>
+inoremap <C-s> <C-O>:w<CR>
+" shortcut to command-line in normal mode
+nnoremap <Leader>e q:
 
 
 " vim-javascript config
@@ -96,16 +102,19 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 let NERDTreeShowHidden=1
 
 
-" show line numbers
-set number
-
 " use system clipboard by default instead of '+' or '*' registers for copying & pasting
 set clipboard+=unnamedplus
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-set ignorecase          " ignore letter casing in searches
+" Turn off highlighting after search with <Esc> key (note that 'n' & 'N' will return highlighted results)
+nnoremap <silent> <esc> :noh<CR>
+
+set number              " show line numbers
+set wrap                " enable soft line wrap
+set textwidth=0         " disable hard line wrap automatic insertion of newlines
+set wrapmargin=0
 set history=50          " keep 50 lines of command line history
 set ruler               " show the cursor position all the time
 set showcmd             " display incomplete commands
@@ -115,9 +124,8 @@ set smartindent
 set expandtab
 set tabstop=2
 set shiftwidth=2
+" set ignorecase        " ignore letter casing in searches (overrides smartcase)
 
-" Turn off highlighting after search with <Esc> key (note that 'n' & 'N' will return highlighted results)
-nnoremap <silent> <esc> :noh<CR>
 
 " language settings
 au Bufread,BufNewFile *.raml   setfiletype yaml
