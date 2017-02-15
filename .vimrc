@@ -58,6 +58,11 @@ let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
 
 
+" ctrlp.vim config
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|bower_components|\.git|vendor|compiled|dist)$'
+
+
 " easymotion config
 let g:EasyMotion_do_mapping = 0 	" Disable default mappings
 map <Leader> <Plug>(easymotion-prefix)
@@ -94,7 +99,8 @@ let g:EasyMotion_smartcase = 1
 
 
 " NERDTree config
-nmap <Leader>n :NERDTreeToggle<CR>	" manually open NERDTree
+nmap <Leader>n :NERDTreeToggle<CR>	" open NERDTree
+nmap <Leader>m :NERDTreeFind<CR>    " find file in tree
 " Open NERDTree automatically when Vim starts on opening a directory
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
