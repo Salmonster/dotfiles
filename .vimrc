@@ -14,9 +14,10 @@ call plug#begin('~/.vim/plugged')
 
 " utils
 Plug 'scrooloose/nerdtree'
-Plug 'ctrlpvim/ctrlp.vim'		" see :h ctrlp-mappings
+Plug 'ctrlpvim/ctrlp.vim'
 Plug '~/.vim/plugged/YouCompleteMe'
 Plug 'Raimondi/delimitMate'
+Plug 'alvan/vim-closetag'
 Plug 'easymotion/vim-easymotion'
 Plug 'vim-airline/vim-airline'
 Plug 'szw/vim-tags'
@@ -53,12 +54,15 @@ inoremap <C-s> <C-O>:w<CR>
 nnoremap <Leader>e q:
 
 
-" vim-javascript config
-let g:javascript_plugin_jsdoc = 1
-let g:javascript_plugin_ngdoc = 1
+" vim-closetag + delimitMate config
+"     vim-closetag is for xml/html  
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.xml"
+"     turn off delimitMate for those files to avoid double-bracketing
+let delimitMate_excluded_ft = "html,xhtml,phtml,xml"
 
 
 " ctrlp.vim config
+"        see :h ctrlp-mappings
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|bower_components|\.git|vendor|compiled|dist)$'
 
@@ -133,6 +137,11 @@ set shiftwidth=2
 " language settings
 au Bufread,BufNewFile *.raml   setfiletype yaml
 au Filetype javascript setl et tabstop=4 shiftwidth=4
+
+" vim-javascript config
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+
 
 " easy navigation between splits to save a keystroke
 nnoremap <C-J> <C-W><C-J>
