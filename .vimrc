@@ -71,9 +71,6 @@ map <Leader> <Plug>(easymotion-prefix)
 map  <Leader>f <Plug>(easymotion-bd-f)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
 
-" <Leader>s{char}{char} to move to {char}{char} (current view only)
-nmap <Leader>s <Plug>(easymotion-overwin-f2)
-
 " move to line
 map <Leader>L <Plug>(easymotion-bd-jk)
 nmap <Leader>L <Plug>(easymotion-overwin-line)
@@ -137,13 +134,17 @@ set shiftwidth=2
 au Bufread,BufNewFile *.raml   setfiletype yaml
 au Filetype javascript setl et tabstop=4 shiftwidth=4
 
-" Easy navigation between splits to save a keystroke
+" easy navigation between splits to save a keystroke
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+" create and quit a window easily
+nnoremap <C-N> <C-W><C-N>
+nnoremap <Leader>s :vnew<CR>
+nnoremap <C-Q> :q<CR>
 
-" Move across display lines, not physical lines
+" move across display lines, not physical lines
 noremap j gj
 noremap gj j
 noremap k gk
@@ -164,7 +165,7 @@ if has('nvim')
   " escape terminal mode with 'jk' or <Esc>
   tnoremap jk <C-\><C-n>
   tnoremap <Esc> <C-\><C-n>
-  " Use these only with emacs bindings in the terminal
+  " use these only with emacs bindings in the terminal
   " tnoremap <C-h> <C-\><C-n><C-w>h
   " tnoremap <C-j> <C-\><C-n><C-w>j
   " tnoremap <C-k> <C-\><C-n><C-w>k
@@ -179,7 +180,7 @@ if has('nvim')
   " nmap <Leader>l :let @r = '(enter! ' . '"' . expand("%") . '")'<CR><C-l>"rpa<CR>
 endif
 
-" Trigger autoread when changing buffers or coming back to vim.
+" trigger autoread when changing buffers or coming back to vim
 au FocusGained,BufEnter * :silent! !
 
 " Convenient command to see the difference between the current buffer and the
