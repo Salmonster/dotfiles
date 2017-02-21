@@ -61,6 +61,11 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.xml"
 let delimitMate_excluded_ft = "html,xhtml,phtml,xml"
 
 
+" vim-javascript config
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+
+
 " ctrlp.vim config
 "        see :h ctrlp-mappings
 let g:ctrlp_working_path_mode = 'ra'
@@ -115,8 +120,10 @@ set clipboard+=unnamedplus
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-" Turn off highlighting after search with <Esc> key (note that 'n' & 'N' will return highlighted results)
-nnoremap <silent> <esc> :noh<CR>
+" Turn off highlighting after search with <Esc> (note that 'n' & 'N' will return highlighted results)
+" nnoremap <silent> <esc> :noh<CR>
+" Turn off highlighting of search results altogether (too eager on some commands)
+set nohlsearch
 
 set number              " show line numbers
 set wrap                " enable soft line wrap
@@ -138,9 +145,9 @@ set shiftwidth=2
 au Bufread,BufNewFile *.raml   setfiletype yaml
 au Filetype javascript setl et tabstop=4 shiftwidth=4
 
-" vim-javascript config
-let g:javascript_plugin_jsdoc = 1
-let g:javascript_plugin_ngdoc = 1
+" html comment/uncomment
+nnoremap <Leader>[ vat:s/^\(.*\)$/<!-- \1 -->/<CR>
+nnoremap <Leader>] vat:s/<!--\(.*\)-->/\1/<CR>
 
 
 " easy navigation between splits to save a keystroke
