@@ -18,7 +18,9 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug '~/.vim/plugged/YouCompleteMe'
 Plug 'Raimondi/delimitMate'
 Plug 'alvan/vim-closetag'
+Plug 'scrooloose/nerdcommenter'
 Plug 'easymotion/vim-easymotion'
+Plug 'godlygeek/tabular'
 Plug 'vim-airline/vim-airline'
 Plug 'szw/vim-tags'
 
@@ -55,10 +57,21 @@ nnoremap <Leader>e q:
 
 
 " vim-closetag + delimitMate config
-"     vim-closetag is for xml/html  
+"     vim-closetag is for xml/html
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.xml"
 "     turn off delimitMate for those files to avoid double-bracketing
 let delimitMate_excluded_ft = "html,xhtml,phtml,xml"
+
+
+" nerdcommenter config
+"   add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+"   use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+"   align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+"   enable trimming of trailing whitespace with uncomment command
+let g:NERDTrimTrailingWhitespace = 1
 
 
 " vim-javascript config
@@ -144,10 +157,6 @@ set shiftwidth=2
 " language settings
 au Bufread,BufNewFile *.raml   setfiletype yaml
 au Filetype javascript setl et tabstop=4 shiftwidth=4
-
-" html comment/uncomment
-nnoremap <Leader>[ vat:s/^\(.*\)$/<!-- \1 -->/<CR>
-nnoremap <Leader>] vat:s/<!--\(.*\)-->/\1/<CR>
 
 
 " easy navigation between splits to save a keystroke
