@@ -30,6 +30,7 @@ Plug 'pangloss/vim-javascript'
 
 " style
 Plug 'w0ng/vim-hybrid'
+Plug 'luochen1990/rainbow'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -127,15 +128,18 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 let NERDTreeShowHidden=1
 
 
+" rainbow parentheses & html bracket hierarchy color matching on
+let g:rainbow_active = 1
+
+
 " use system clipboard by default instead of '+' or '*' registers for copying & pasting
 set clipboard+=unnamedplus
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-" Turn off highlighting after search with <Esc> (note that 'n' & 'N' will return highlighted results)
-" nnoremap <silent> <esc> :noh<CR>
-" Turn off highlighting of search results altogether (too eager on some commands)
+" Turn off highlighting of search results, which is too eager on some commands
+" Note that 'n' & 'N' will still jump through results
 set nohlsearch
 
 set number              " show line numbers
