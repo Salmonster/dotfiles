@@ -3,6 +3,7 @@
 ln -siv $(pwd)/.vimrc ~/.vimrc
 ln -siv $(pwd)/.zshrc ~/.zshrc
 ln -siv $(pwd)/.ctags ~/.ctags
+ln -siv $(pwd)/.tern-config ~/.tern-config
 # ln -siv $(pwd)/.tmux.conf ~/.tmux.conf
 # ln -siv $(pwd)/.gitconfig ~/.gitconfig
 #
