@@ -150,6 +150,7 @@ set history=50          " keep 50 lines of command line history
 set ruler               " show the cursor position all the time
 set showcmd             " display incomplete commands
 set incsearch           " do incremental searching
+set inccommand=split    " do incremental substitutions with preview split
 set autoindent          " always set autoindenting on
 set smartindent
 set expandtab
