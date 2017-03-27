@@ -156,6 +156,7 @@ set smartindent
 set expandtab
 set tabstop=2
 set shiftwidth=2
+set smartcase
 " set ignorecase        " ignore letter casing in searches (overrides smartcase)
 
 
