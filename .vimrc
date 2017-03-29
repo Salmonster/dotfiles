@@ -37,7 +37,8 @@ call plug#end()
 
 set background=dark
 colorscheme hybrid
-
+hi String ctermfg=228
+hi Comment ctermfg=245
 
 map <F2> :mksession! ~/vim_session <CR> 	" Quick write session with F2
 map <F3> :source ~/vim_session <CR>   		" And load session with F3
@@ -84,6 +85,8 @@ let g:javascript_plugin_ngdoc = 1
 "        see :h ctrlp-mappings
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|bower_components|\.git|vendor|compiled|dist)$'
+"        search tag references and choose which to jump to
+nnoremap <Leader>g :CtrlPTag<CR>
 
 
 " easymotion config
@@ -142,6 +145,8 @@ set backspace=indent,eol,start
 " Note that 'n' & 'N' will still jump through results
 set nohlsearch
 
+set scrolloff=5
+
 set number              " show line numbers
 set wrap                " enable soft line wrap
 set textwidth=0         " disable hard line wrap automatic insertion of newlines
@@ -156,8 +161,9 @@ set smartindent
 set expandtab
 set tabstop=2
 set shiftwidth=2
+set ignorecase
 set smartcase
-" set ignorecase        " ignore letter casing in searches (overrides smartcase)
+set cursorline
 
 
 " language settings
@@ -196,19 +202,9 @@ if has('nvim')
   " escape terminal mode with 'jk' or <Esc>
   tnoremap jk <C-\><C-n>
   tnoremap <Esc> <C-\><C-n>
-  " use these only with emacs bindings in the terminal
-  " tnoremap <C-h> <C-\><C-n><C-w>h
-  " tnoremap <C-j> <C-\><C-n><C-w>j
-  " tnoremap <C-k> <C-\><C-n><C-w>k
-  " tnoremap <C-l> <C-\><C-n><C-w>l
-
-  " vmap <Leader>e y<C-l>p
-  " nmap <Leader>e vipy<C-l>p
-  " :vs | term<CR> works great in nvim for new terminal in vertical window
-  " starting in INSERT mode, but when run by the shell at startup the pipe
-  " causes a parse error, so we settle for:
+  " jump to terminal window in vim, so long as there's just one
+  nnoremap <Leader>b :buffer<Space>term
   nnoremap <Leader>vt :vs term://zsh<CR>
-  " nmap <Leader>l :let @r = '(enter! ' . '"' . expand("%") . '")'<CR><C-l>"rpa<CR>
 endif
 
 " trigger autoread when changing buffers or coming back to vim
