@@ -56,6 +56,8 @@ vnoremap <C-s> <C-C>:w<CR>
 inoremap <C-s> <C-O>:w<CR>
 " shortcut to command-line in normal mode
 nnoremap <Leader>e q:
+" use ack via :grep command
+set grepprg=ack\ -k
 
 
 " vim-closetag + delimitMate config

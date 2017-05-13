@@ -1,0 +1,10 @@
+# Don't search logs or ctags
+--ignore-file=ext:log
+--ignore-file=is:tags
+
+# Always color, even if piping to another program
+--color
+
+# Figure out how to page results in zsh without unexpected characters
+# --pager="less -R"
+
