@@ -3,9 +3,6 @@ set nocompatible 	" be iMproved
 
 " to view variable mappings, run => :verbose set variable1? [(variable2)? (variable3)? etc.]
 
-" remember to load any remote plugins properly
-" :h remote-plugin-manifest
-
 " vim-plug => see ~/.vim/autoload/plug.vim
 call plug#begin('~/.vim/plugged')
 " Syntax highlighting & filetype detection now handled by vim-plug
@@ -20,6 +17,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'alvan/vim-closetag'
 Plug 'scrooloose/nerdcommenter'
 Plug 'easymotion/vim-easymotion'
+Plug 'mileszs/ack.vim'
 Plug 'godlygeek/tabular'
 Plug 'vim-airline/vim-airline'
 Plug 'szw/vim-tags'
@@ -56,8 +54,6 @@ vnoremap <C-s> <C-C>:w<CR>
 inoremap <C-s> <C-O>:w<CR>
 " shortcut to command-line in normal mode
 nnoremap <Leader>e q:
-" use ack via :grep command
-set grepprg=ack\ -k
 
 
 " vim-closetag + delimitMate config
@@ -65,6 +61,11 @@ set grepprg=ack\ -k
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.xml"
 "     turn off delimitMate for those files to avoid double-bracketing
 let delimitMate_excluded_ft = "html,xhtml,phtml,xml"
+
+
+" ack.vim config
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
 
 
 " nerdcommenter config
