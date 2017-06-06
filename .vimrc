@@ -150,6 +150,9 @@ set nohlsearch
 
 set scrolloff=5
 
+" Disable preview window
+set completeopt-=preview
+
 set number              " show line numbers
 set wrap                " enable soft line wrap
 set textwidth=0         " disable hard line wrap automatic insertion of newlines
