@@ -208,8 +208,6 @@ if has('nvim')
   " escape terminal mode with 'jk' or <Esc>
   tnoremap jk <C-\><C-n>
   tnoremap <Esc> <C-\><C-n>
-  " jump to terminal window in vim, so long as there's just one
-  nnoremap <Leader>b :buffer<Space>term
   nnoremap <Leader>vt :vs term://zsh<CR>
 endif
 

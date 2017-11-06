@@ -112,8 +112,8 @@ alias cds='cd ~/projects/support-service; . ../venv/bin/activate'
 alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
-alias ldapsearch='ldapsearch -h auth.edir.rackspace.com -x'
-alias swapdir='cd ~/.local/share/nvim/swap//'
+alias ldapsearch='ldapsearch -x -ZZ -H ldap://auth.edir.rackspace.com -D "cn=salm0028,ou=users,o=rackspace" -W'
+alias swapdir='cd ~/.local/share/nvim/swap/'
 
 # useful for killing a zombie running on a socket; use like => `killport 3000`
 function killport { kill $(lsof -i :$@ | tail -n 1 | cut -f 5 -d ' '); }
