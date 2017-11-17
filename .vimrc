@@ -21,6 +21,7 @@ Plug 'mileszs/ack.vim'
 Plug 'godlygeek/tabular'
 Plug 'vim-airline/vim-airline'
 Plug 'szw/vim-tags'
+Plug 'arithran/vim-delete-hidden-buffers'
 
 " language-specific
 Plug 'jmcantrell/vim-virtualenv'
