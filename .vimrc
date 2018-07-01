@@ -22,6 +22,7 @@ Plug 'godlygeek/tabular'
 Plug 'vim-airline/vim-airline'
 Plug 'szw/vim-tags'
 Plug 'arithran/vim-delete-hidden-buffers'
+Plug 'vim-syntastic/syntastic'
 
 " language-specific
 Plug 'jmcantrell/vim-virtualenv'
@@ -39,8 +40,8 @@ colorscheme hybrid
 hi String ctermfg=228
 hi Comment ctermfg=245
 
-map <F2> :mksession! ~/vim_session <CR> 	" Quick write session with F2
-map <F3> :source ~/vim_session <CR>   		" And load session with F3
+map <F2> :mksession! ~/vim_session <CR> 	" write session with F2
+map <F3> :source ~/vim_session <CR>   		" load session with F3
 
 let mapleader = "\<space>"
 
@@ -49,7 +50,7 @@ inoremap jk <Esc>
 " ^d for forward delete-char
 inoremap <C-d> <Del>
 nnoremap ; :
-" quick save file
+" save file
 noremap <C-s>  :w<CR>
 vnoremap <C-s> <C-C>:w<CR>
 inoremap <C-s> <C-O>:w<CR>
@@ -137,6 +138,13 @@ let NERDTreeShowHidden=1
 
 " rainbow parentheses & html bracket hierarchy color matching on
 let g:rainbow_active = 1
+
+
+" Syntastic config
+"  toggle global active/passive mode
+map <Leader>c :SyntasticToggleMode<CR>
+"  show plugin mode & any checker enabled on the current file
+map <Leader>i :SyntasticInfo<CR>
 
 
 " use system clipboard by default instead of '+' or '*' registers for copying & pasting
