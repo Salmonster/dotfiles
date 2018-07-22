@@ -4,7 +4,7 @@ ln -siv $(pwd)/.vimrc ~/.vimrc
 ln -siv $(pwd)/.zshrc ~/.zshrc
 ln -siv $(pwd)/.ctags ~/.ctags
 ln -siv $(pwd)/.ackrc ~/.ackrc
-# ln -siv $(pwd)/.gitconfig ~/.gitconfig
+ln -siv $(pwd)/.gitconfig ~/.gitconfig
 #
 # The above commands will create $HOME level dotfiles as symlinks to files in this repo
 # on whatever device this script is cloned and executed in.
