@@ -114,7 +114,8 @@ alias cdss='cd ~/Documents/GitHubRepos/support-service; . ../venv/bin/activate'
 alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
-alias ldapsearch='ldapsearch -x -ZZ -H ldap://auth.edir.rackspace.com -D "cn=salm0028,ou=users,o=rackspace" -W'
+# alias ldapsearch='ldapsearch -x -ZZ -H ldap://auth.edir.rackspace.com -D "cn=salm0028,ou=users,o=rackspace" -W'
+alias ldapsearch='ldapsearch -x -D "rackspace\\salm0028" -W -LLL -H ldaps://ad.auth.rackspace.com -b "dc=rackspace,dc=corp"'
 alias swapdir='cd ~/.local/share/nvim/swap/'
 
 # useful for killing a zombie running on a socket; use like => `killport 3000`
