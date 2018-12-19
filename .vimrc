@@ -12,7 +12,6 @@ call plug#begin('~/.vim/plugged')
 " utils
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug '~/.vim/plugged/YouCompleteMe'
 Plug 'Raimondi/delimitMate'
 Plug 'alvan/vim-closetag'
 Plug 'scrooloose/nerdcommenter'
@@ -42,6 +41,7 @@ hi Comment ctermfg=245
 
 map <F2> :mksession! ~/vim_session <CR> 	" write session with F2
 map <F3> :source ~/vim_session <CR>   		" load session with F3
+map <F4> :let @+=expand("%")<CR>          " grab filename with F4
 
 let mapleader = "\<space>"
 

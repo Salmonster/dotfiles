@@ -5,6 +5,9 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/$USER/.oh-my-zsh
 
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -114,7 +117,6 @@ alias cdss='cd ~/Documents/GitHubRepos/support-service; . ../venv/bin/activate'
 alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
-# alias ldapsearch='ldapsearch -x -ZZ -H ldap://auth.edir.rackspace.com -D "cn=salm0028,ou=users,o=rackspace" -W'
 alias ldapsearch='ldapsearch -x -D "rackspace\\salm0028" -W -LLL -H ldaps://ad.auth.rackspace.com -b "dc=rackspace,dc=corp"'
 alias swapdir='cd ~/.local/share/nvim/swap/'
 

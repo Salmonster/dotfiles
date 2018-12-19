@@ -16,3 +16,5 @@
 [core]
 	autocrlf = false
 	safecrlf = true
+[url "https://github.com/"]
+	insteadOf = git://github.com/
