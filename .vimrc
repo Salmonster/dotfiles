@@ -145,6 +145,7 @@ let g:rainbow_active = 1
 map <Leader>c :SyntasticToggleMode<CR>
 "  show plugin mode & any checker enabled on the current file
 map <Leader>i :SyntasticInfo<CR>
+let g:syntastic_go_checkers = ['gofmt']
 
 
 " use system clipboard by default instead of '+' or '*' registers for copying & pasting
