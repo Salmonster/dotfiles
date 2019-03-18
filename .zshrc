@@ -1,5 +1,3 @@
-# If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:$PATH
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 export GOPATH=$HOME/Library/go
 
@@ -7,13 +5,14 @@ export GOPATH=$HOME/Library/go
 export ZSH=/Users/$USER/.oh-my-zsh
 
 export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
+function setup_nvm {
+    . /usr/local/opt/nvm/nvm.sh
+}
 
 # Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="crunch"
-# ^>^>^ So far, 'crunch' is winning...... (single line prompt, timestamp, vim mode compliant, but not ^d compliant)
+# Custom theme set by link.sh from dotfiles
+ZSH_THEME="salman"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -114,12 +113,13 @@ export RSAPROXY_USERNAME=salm0028
 
 alias ls='ls -GFh'
 alias cds='cd ~/projects/support-service; . ../venv/bin/activate'
-alias cdss='cd ~/Documents/GitHubRepos/support-service; . ../venv/bin/activate'
 alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 alias ldapsearch='ldapsearch -x -D "rackspace\\salm0028" -W -LLL -H ldaps://ad.auth.rackspace.com -b "dc=rackspace,dc=corp"'
 alias swapdir='cd ~/.local/share/nvim/swap/'
+alias rm-pyc='find . -name "*.pyc" -exec rm -rf {} \;'
 
-# useful for killing a zombie running on a socket; use like => `killport 3000`
+# kill a zombie running on a socket
+#   usage  => `killport 3000`
 function killport { kill $(lsof -i :$@ | tail -n 1 | cut -f 5 -d ' '); }
