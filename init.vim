@@ -56,6 +56,8 @@ vnoremap <C-s> <C-C>:w<CR>
 inoremap <C-s> <C-O>:w<CR>
 " shortcut to command-line in normal mode
 nnoremap <Leader>e q:
+" setting to get `crontab -e` edits working in mac os
+autocmd filetype crontab setlocal nobackup nowritebackup
 
 
 " vim-closetag + delimitMate config
