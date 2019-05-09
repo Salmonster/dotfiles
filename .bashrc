@@ -32,16 +32,12 @@ fi
 #  - nice emacs keybindings are lost, requires bindkey changes
 # set -o vi
 
-export RSAPROXY_GATEWAY=auth.ord1.gateway.rackspace.com
-export RSAPROXY_USERNAME=salm0028
-
 alias ls='ls -GFh'
 alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
-alias ldapsearch='ldapsearch -x -D "rackspace\\salm0028" -W -LLL -H ldaps://ad.auth.rackspace.com -b "dc=rackspace,dc=corp"'
 alias swapdir='cd ~/.local/share/nvim/swap/'
-# To use the system Python of OSX (v2.7), use `python2` and `pip2`
+# To use the system Python of OSX (v2.7), use `python2`
 alias python='python3'
 alias pip='pip3'
 alias rm-pyc='find . -name "*.pyc" -exec rm -rf {} \;'
