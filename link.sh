@@ -2,7 +2,6 @@
 
 ln -siv $(pwd)/.zshrc ~/.zshrc
 ln -siv $(pwd)/.bashrc ~/.bashrc
-ln -siv $(pwd)/.ctags ~/.ctags
 ln -siv $(pwd)/.ackrc ~/.ackrc
 ln -siv $(pwd)/.gitconfig ~/.gitconfig
 ln -siv $(pwd)/.ansible.cfg ~/.ansible.cfg
