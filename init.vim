@@ -66,6 +66,10 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.xml"
 "     turn off delimitMate for those files to avoid double-bracketing
 let delimitMate_excluded_ft = "html,xhtml,phtml,xml"
 
+" pretty-print XML
+"     the 'dd' is to remove the XML declaration added to the top
+"     extraneous lines are removed, unmatched tags throw error
+nnoremap <Leader>x :%!xmllint --format %<CR>dd
 
 " ack.vim config
 cnoreabbrev Ack Ack!
