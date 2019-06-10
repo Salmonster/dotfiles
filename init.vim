@@ -62,9 +62,13 @@ autocmd filetype crontab setlocal nobackup nowritebackup
 
 " vim-closetag + delimitMate config
 "     vim-closetag is for xml/html
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.xml"
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.xml,*.jinja,*.jinja2"
 "     turn off delimitMate for those files to avoid double-bracketing
-let delimitMate_excluded_ft = "html,xhtml,phtml,xml"
+let delimitMate_excluded_ft = "html,xhtml,phtml,xml,jinja,jinja2"
+
+" tell vim to recognize these filetypes, for nerdcommenter and rainbow plugin functionality
+au BufNewFile,BufRead *.jinja   setf jinja
+au BufNewFile,BufRead *.jinja2  setf jinja2
 
 " pretty-print XML
 "     the 'dd' is to remove the XML declaration added to the top
