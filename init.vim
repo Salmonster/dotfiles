@@ -22,12 +22,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'szw/vim-tags'
 Plug 'arithran/vim-delete-hidden-buffers'
 Plug 'vim-syntastic/syntastic'
-
-" language-specific
-Plug 'jmcantrell/vim-virtualenv'
 Plug 'pangloss/vim-javascript'
-
-" style
 Plug 'w0ng/vim-hybrid'
 Plug 'luochen1990/rainbow'
 
@@ -156,6 +151,10 @@ map <Leader>c :SyntasticToggleMode<CR>
 "  show plugin mode & any checker enabled on the current file
 map <Leader>i :SyntasticInfo<CR>
 let g:syntastic_go_checkers = ['gofmt']
+" add MyPy static type checker for Python
+let g:syntastic_python_checkers = ['python', 'pylint', 'mypy']
+" show syntax issues from all checkers
+let g:syntastic_aggregate_errors=1
 
 
 " use system clipboard by default instead of '+' or '*' registers for copying & pasting
