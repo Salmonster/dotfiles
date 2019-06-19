@@ -1,8 +1,9 @@
 #!/bin/bash
 
+ln -siv $(pwd)/.ackrc ~/.ackrc
 ln -siv $(pwd)/.zshrc ~/.zshrc
 ln -siv $(pwd)/.bashrc ~/.bashrc
-ln -siv $(pwd)/.ackrc ~/.ackrc
+ln -siv $(pwd)/.mypy.ini ~/.mypy.ini
 ln -siv $(pwd)/.gitconfig ~/.gitconfig
 ln -siv $(pwd)/.ansible.cfg ~/.ansible.cfg
 ln -siv $(pwd)/init.vim ~/.config/nvim/init.vim
