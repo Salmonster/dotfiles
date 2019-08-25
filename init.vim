@@ -236,16 +236,14 @@ au FocusGained,BufEnter * :silent! !
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
 " Only define it when not defined already.
-" You'll need to run :diffoff to get out of this view and close the extra window.
+" You'll need to run :diffoff to get out of this view, and close the extra window.
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
                   \ | wincmd p | diffthis
 endif
 
-" Prevent that the langmap option applies to characters that result from a
-" mapping.  If unset (default), this may break plugins (but it's backward
-" compatible).
+" Prevent langmap option from applying to characters that result from a
+" mapping.  If unset (default), this may break plugins.
 if has('langmap') && exists('+langnoremap')
   set langnoremap
 endif
-
