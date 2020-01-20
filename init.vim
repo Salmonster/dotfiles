@@ -67,8 +67,13 @@ au BufNewFile,BufRead *.jinja2  setf jinja2
 
 " pretty-print XML
 "     the 'dd' is to remove the XML declaration added to the top
-"     extraneous lines are removed, unmatched tags throw error
+"     extraneous lines are removed unless the XML is visually selected
+"     unmatched tags throw error
+"     BUFFER MUST BE SAVED AS FILE (any type) FOR IT TO WORK
 nnoremap <Leader>x :%!xmllint --format %<CR>dd
+
+" pretty-print JSON
+nnoremap <Leader>q :%!python -m json.tool<CR>
 
 " ack.vim config
 cnoreabbrev Ack Ack!
