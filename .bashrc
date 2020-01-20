@@ -1,6 +1,8 @@
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/sbin
 export GOPATH=$HOME/Library/go
 export NVM_DIR="$HOME/.nvm"
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 function setup_nvm {
     . /usr/local/opt/nvm/nvm.sh
 }
