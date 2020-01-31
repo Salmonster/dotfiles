@@ -187,6 +187,7 @@ set showcmd             " display incomplete commands
 set incsearch           " do incremental searching
 set inccommand=split    " do incremental substitutions with preview split
 set autoindent          " always set autoindenting on
+set nopaste             " avoid paste mode when copying from external sources
 set smartindent
 set expandtab
 set tabstop=2
