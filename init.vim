@@ -34,9 +34,10 @@ colorscheme hybrid
 hi String ctermfg=228
 hi Comment ctermfg=245
 
-map <F2> :mksession! ~/vim_session <CR> 	" write session with F2
-map <F3> :source ~/vim_session <CR>   		" load session with F3
+map <F2> :mksession! ~/vim_session <CR>   " write session with F2
+map <F3> :source ~/vim_session <CR>       " load session with F3
 map <F4> :let @+=expand("%")<CR>          " grab filename with F4
+map <F5> :DeleteHiddenBuffers<CR>         " delete hidden buffers with F5
 
 let mapleader = "\<space>"
 
