@@ -3,7 +3,7 @@ set nocompatible 	" be iMproved
 
 " to view variable mappings, run => :verbose set variable1? [(variable2)? (variable3)? etc.]
 
-" vim-plug => see ~/.vim/autoload/plug.vim
+" vim-plug => see installation instructions for Neovim at https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
 " Syntax highlighting & filetype detection now handled by vim-plug
 " syntax on
