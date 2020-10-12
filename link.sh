@@ -8,7 +8,13 @@ ln -siv $(pwd)/.gitconfig ~/.gitconfig
 ln -siv $(pwd)/.ansible.cfg ~/.ansible.cfg
 ln -siv $(pwd)/init.vim ~/.config/nvim/init.vim
 ln -siv $(pwd)/salman.zsh-theme $ZSH/themes/salman.zsh-theme
-#
+
+# Because of https://github.com/easymotion/vim-easymotion/issues/408
+# you need a pre-0.4.0 version of Neovim. Download a tarball for a macos
+# binary from https://github.com/neovim/neovim/releases, copy its artifacts
+# to /usr/local/ and then run the following command:
+ln -siv /usr/local/nvim-osx64/bin/nvim /usr/local/bin/nvim
+
 # The above commands will create $HOME level dotfiles as symlinks to files in this repo
 # on whatever device this script is cloned and executed in.
 # If those files already exist, you will be prompted to unlink those files so that the
