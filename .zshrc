@@ -111,10 +111,11 @@ export KEYTIMEOUT=10
 # Personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes.
 alias ls='ls -GFh'
-alias cds='cd ~/projects/support-service; . ../venv/bin/activate'
 alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
+alias cds='cd ~/projects/support-service; . ../venv/bin/activate'
+alias vnv='. .env/bin/activate'
 alias swapdir='cd ~/.local/share/nvim/swap/'
 # To use the system Python of OSX (v2.7), use `python2`
 # alias python='python3'
