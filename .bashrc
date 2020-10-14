@@ -1,10 +1,10 @@
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/sbin
 export GOPATH=$HOME/Library/go
-export NVM_DIR="$HOME/.nvm"
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
+export NVM_DIR="$HOME/.nvm"
 function setup_nvm {
-    . /usr/local/opt/nvm/nvm.sh
+    . $NVM_DIR/nvm.sh
 }
 
 # https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh

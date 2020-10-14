@@ -6,7 +6,7 @@ export ZSH=/Users/$USER/.oh-my-zsh
 
 export NVM_DIR="$HOME/.nvm"
 function setup_nvm {
-    . /usr/local/opt/nvm/nvm.sh
+    . $NVM_DIR/nvm.sh
 }
 
 # Set name of the theme to load. Optionally, if you set this to "random"
