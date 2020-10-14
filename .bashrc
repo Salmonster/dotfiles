@@ -1,5 +1,6 @@
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/sbin
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="/usr/local/Cellar/python@2/2.7.17_1/bin:$PATH"
 export GOPATH=$HOME/Library/go
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
