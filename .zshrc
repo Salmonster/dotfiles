@@ -1,4 +1,5 @@
 export PATH="/usr/local/opt/openssl/bin:$PATH"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export GOPATH=$HOME/Library/go
 
 # Path to your oh-my-zsh installation.
