@@ -1,7 +1,10 @@
 set t_Co=256
 set nocompatible 	" be iMproved
 
-" to view variable mappings, run => :verbose set variable1? [(variable2)? (variable3)? etc.]
+" To view variable mappings, run => :verbose set variable1? [(variable2)? (variable3)? etc.]
+
+" Remember to install https://github.com/universal-ctags/ctags for support of
+" tags across many languages!
 
 " vim-plug => see installation instructions for Neovim at https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
