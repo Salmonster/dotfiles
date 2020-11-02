@@ -42,6 +42,8 @@ alias la='ls -a'
 alias lla='ls -la'
 alias cds='cd ~/projects/support-service; . ../venv/bin/activate'
 alias vnv='source .env/bin/activate'
+# Cockpit has a .env file, so use env
+alias ckp='. env/bin/activate'
 alias swapdir='cd ~/.local/share/nvim/swap/'
 # To use the system Python of OSX (v2.7), use `python2`
 # alias python='python3'
@@ -50,4 +52,4 @@ alias rm-pyc='find . -name "*.pyc" -exec rm -rf {} \;'
 
 # kill a zombie running on a socket
 #   usage  => `killport 3000`
-function killport { kill $(lsof -i :$@ | tail -n 1 | cut -f 5 -d ' '); }
+function killport { kill $(lsof -i :$@ | tail -n 1 | cut -f 3 -d ' '); }
