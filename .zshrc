@@ -2,6 +2,7 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="/usr/local/Cellar/python@2/2.7.17_1/bin:$PATH"
 export GOPATH=$HOME/Library/go
+export HOMEBREW_NO_AUTO_UPDATE=1
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/$USER/.oh-my-zsh

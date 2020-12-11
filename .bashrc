@@ -3,6 +3,7 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="/usr/local/Cellar/python@2/2.7.17_1/bin:$PATH"
 export GOPATH=$HOME/Library/go
 export BASH_SILENCE_DEPRECATION_WARNING=1
+export HOMEBREW_NO_AUTO_UPDATE=1
 
 export NVM_DIR="$HOME/.nvm"
 function setup_nvm {
