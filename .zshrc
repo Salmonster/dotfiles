@@ -11,6 +11,7 @@ export NVM_DIR="$HOME/.nvm"
 function setup_nvm {
     . $NVM_DIR/nvm.sh
 }
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes

@@ -9,6 +9,7 @@ export NVM_DIR="$HOME/.nvm"
 function setup_nvm {
     . $NVM_DIR/nvm.sh
 }
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
 . ~/.git-prompt.sh
