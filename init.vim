@@ -1,10 +1,10 @@
 set t_Co=256
 set nocompatible 	" be iMproved
 
-" To view variable mappings, run => :verbose set variable1? [(variable2)? (variable3)? etc.]
+" To view variable mappings, run => :echo variable1 [(variable2) (variable3) etc.]
 
 " Remember to install https://github.com/universal-ctags/ctags for support of
-" tags across many languages!
+" tags across many languages
 
 " vim-plug => see installation instructions for Neovim at https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
@@ -107,6 +107,10 @@ let g:ctrlp_custom_ignore = '\v[\/](node_modules|bower_components|\.git|vendor|c
 "        search tag references and choose which to jump to
 nnoremap <Leader>g :CtrlPTag<CR>
 
+" explicitly set vim_tags_ignore_files to none to avoid https://github.com/szw/vim-tags/issues/12 ???
+" There's the option of ignoring .env, .venv, and .git in a new ~/.ctags config
+" let g:vim_tags_ignore_files = []
+" let g:vim_tags_auto_generate = 0 " default 1, generate on file-save
 
 " easymotion config
 let g:EasyMotion_do_mapping = 0 	" Disable default mappings
