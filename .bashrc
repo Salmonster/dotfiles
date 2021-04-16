@@ -1,9 +1,15 @@
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/sbin
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="/usr/local/Cellar/python@2/2.7.17_1/bin:$PATH"
 export GOPATH=$HOME/Library/go
-export BASH_SILENCE_DEPRECATION_WARNING=1
+export PATH="/usr/local/Cellar/python@2/2.7.17_1/bin:$GOPATH/bin:$PATH"
+
 export HOMEBREW_NO_AUTO_UPDATE=1
+export GO111MODULE=on
+export GOPRIVATE="github.com/mailgun"
+export ETCD3_ENDPOINT=localhost:2379
+export EVENTBUS_ENDPOINT=localhost:19091
+export MG_ENV=dev
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 export NVM_DIR="$HOME/.nvm"
 function setup_nvm {

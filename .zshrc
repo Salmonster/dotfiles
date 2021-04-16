@@ -1,8 +1,14 @@
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="/usr/local/Cellar/python@2/2.7.17_1/bin:$PATH"
 export GOPATH=$HOME/Library/go
+export PATH="/usr/local/Cellar/python@2/2.7.17_1/bin:$GOPATH/bin:$PATH"
+
 export HOMEBREW_NO_AUTO_UPDATE=1
+export GO111MODULE=on
+export GOPRIVATE="github.com/mailgun"
+export ETCD3_ENDPOINT=localhost:2379
+export EVENTBUS_ENDPOINT=localhost:19091
+export MG_ENV=dev
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/$USER/.oh-my-zsh

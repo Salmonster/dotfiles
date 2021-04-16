@@ -20,12 +20,12 @@ Plug 'alvan/vim-closetag'
 Plug 'scrooloose/nerdcommenter'
 Plug 'easymotion/vim-easymotion'
 Plug 'mileszs/ack.vim'
-Plug 'godlygeek/tabular'
 Plug 'vim-airline/vim-airline'
 Plug 'szw/vim-tags'
 Plug 'arithran/vim-delete-hidden-buffers'
 Plug 'vim-syntastic/syntastic'
 Plug 'pangloss/vim-javascript'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'w0ng/vim-hybrid'
 Plug 'luochen1990/rainbow'
 
@@ -107,18 +107,21 @@ let g:ctrlp_custom_ignore = '\v[\/](node_modules|bower_components|\.git|vendor|c
 "        search tag references and choose which to jump to
 nnoremap <Leader>g :CtrlPTag<CR>
 
-" explicitly set vim_tags_ignore_files to none to avoid https://github.com/szw/vim-tags/issues/12 ???
-" There's the option of ignoring .env, .venv, and .git in a new ~/.ctags config
-" let g:vim_tags_ignore_files = []
-" let g:vim_tags_auto_generate = 0 " default 1, generate on file-save
+" let g:vim_tags_ignore_files = [] " default is ignore files listed in VCS .ignore files
+let g:vim_tags_auto_generate = 0 " default is 1, generate on file-save
+map <Leader>t :TagsGenerate!<CR>
 
 " easymotion config
 let g:EasyMotion_do_mapping = 0 	" Disable default mappings
 map <Leader> <Plug>(easymotion-prefix)
 
 " <Leader>f{char} to move to {char} (current view only)
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
+" map  <Leader>f <Plug>(easymotion-bd-f)
+" nmap <Leader>f <Plug>(easymotion-overwin-f)
+""
+" Until https://github.com/easymotion/vim-easymotion/issues/408 is fixed for post-0.4.0
+" versions of Neovim, use this workaround to search for text from clipboard:
+map <Leader>f <Plug>(easymotion-sn)<C-R>*
 
 " move to line
 map <Leader>L <Plug>(easymotion-bd-jk)
