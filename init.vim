@@ -4,11 +4,14 @@ set nocompatible 	" be iMproved
 " To view variable mappings, run => :echo variable1 [(variable2) (variable3) etc.]
 
 " Remember to install https://github.com/universal-ctags/ctags for support of
-" tags across many languages
+" tags across many languages.
 
-" vim-plug => see installation instructions for Neovim at https://github.com/junegunn/vim-plug
+" Run :checkhealth after installing all plugins.
+" Activate a Python project's virtualenv before starting NeoVim to properly generate tags for it.
+
+" vim-plug => https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
-" Syntax highlighting & filetype detection now handled by vim-plug
+" Syntax highlighting & filetype detection handled by vim-plug
 " syntax on
 " filetype plugin indent on
 
@@ -109,6 +112,7 @@ nnoremap <Leader>g :CtrlPTag<CR>
 
 " let g:vim_tags_ignore_files = [] " default is ignore files listed in VCS .ignore files
 let g:vim_tags_auto_generate = 0 " default is 1, generate on file-save
+" Activate a Python project's virtualenv before starting NeoVim to properly generate tags for it
 map <Leader>t :TagsGenerate!<CR>
 
 " easymotion config

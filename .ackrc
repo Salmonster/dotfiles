@@ -1,6 +1,7 @@
 # Don't search logs or ctags
 --ignore-file=ext:log
 --ignore-file=is:tags
+--smart-case
 
 # Always color, even if piping to another program
 --color
