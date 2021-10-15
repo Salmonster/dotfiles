@@ -17,7 +17,12 @@ export NVM_DIR="$HOME/.nvm"
 function setup_nvm {
     . $NVM_DIR/nvm.sh
 }
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# This loads nvm bash_completion.
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# Checks if the file .ssh-agent-environment exists in home dir and sources it to set the appropriate environment variables.
+# See related alias below.
+[[ -s ~/.ssh-agent-environment ]] && . ~/.ssh-agent-environment &>/dev/null
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -132,6 +137,8 @@ alias swapdir='cd ~/.local/share/nvim/swap/'
 # alias python='python3'
 # alias pip='pip3'
 alias rm-pyc='find . -name "*.pyc" -exec rm -rf {} \;'
+# https://vlaams-supercomputing-centrum-vscdocumentation.readthedocs-hosted.com/en/latest/access/using_ssh_agent.html
+alias start-ssh-agent='/usr/bin/ssh-agent -s > ~/.ssh-agent-environment; . ~/.ssh-agent-environment'
 
 # kill a zombie running on a socket
 #   usage  => `killport 3000`

@@ -107,7 +107,9 @@ let g:javascript_plugin_ngdoc = 1
 "        see :h ctrlp-mappings
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|bower_components|\.git|vendor|compiled|dist)$'
-"        search tag references and choose which to jump to
+"   scan for dotfiles and dotdirs
+let g:ctrlp_show_hidden = 1
+"   search tag references and choose which to jump to
 nnoremap <Leader>g :CtrlPTag<CR>
 
 " let g:vim_tags_ignore_files = [] " default is ignore files listed in VCS .ignore files
