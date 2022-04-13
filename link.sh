@@ -2,7 +2,9 @@
 
 ln -siv $(pwd)/.ackrc ~/.ackrc
 ln -siv $(pwd)/.zshrc ~/.zshrc
+ln -siv $(pwd)/.zprofile ~/.zprofile
 ln -siv $(pwd)/.bashrc ~/.bashrc
+ln -siv $(pwd)/.profile ~/.profile
 ln -siv $(pwd)/.mypy.ini ~/.mypy.ini
 ln -siv $(pwd)/.gitconfig ~/.gitconfig
 ln -siv $(pwd)/.ansible.cfg ~/.ansible.cfg

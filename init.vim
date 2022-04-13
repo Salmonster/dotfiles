@@ -5,6 +5,8 @@ set nocompatible 	" be iMproved
 
 " Remember to install https://github.com/universal-ctags/ctags for support of
 " tags across many languages.
+" If you see cross-project GoToDef jumps despite a local .git/tags file,
+" check that there's no /Users/salman/tags file screwing things up.
 
 " Run :checkhealth after installing all plugins.
 " Activate a Python project's virtualenv before starting NeoVim to properly generate tags for it.
@@ -116,6 +118,8 @@ nnoremap <Leader>g :CtrlPTag<CR>
 let g:vim_tags_auto_generate = 0 " default is 1, generate on file-save
 " Activate a Python project's virtualenv before starting NeoVim to properly generate tags for it
 map <Leader>t :TagsGenerate!<CR>
+let g:python_host_prog = '/Users/salman/.pyenv/shims/python'
+let g:python3_host_prog = '/Users/salman/.pyenv/shims/python3'
 
 " easymotion config
 let g:EasyMotion_do_mapping = 0 	" Disable default mappings

@@ -1,7 +1,7 @@
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/sbin
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export GOPATH=$HOME/Library/go
-export PATH="/usr/local/Cellar/python@2/2.7.17_1/bin:$GOPATH/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
 
 export HOMEBREW_NO_AUTO_UPDATE=1
 export GO111MODULE=on
@@ -53,15 +53,21 @@ alias ls='ls -GFh'
 alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
-alias vnv='source .env/bin/activate'
+
+# python2 virtual envs
+# cf. https://github.com/pyenv/pyenv & https://github.com/pyenv/pyenv-virtualenv
+# THESE EVALS MUST USE DOUBLE-QUOTES
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+alias venv='pyenv activate ${PWD##*/}'
+alias dvenv='source deactivate'
+# py3 local dir venv
+alias vnv='. .env/bin/activate'
+alias dvnv='deactivate'
+
 alias gomg='cd $GOPATH/src/github.com/mailgun/'
 alias prj='cd ~/projects/'
-# Cockpit has a .env file, so use env
-alias ckp='. env/bin/activate'
 alias swapdir='cd ~/.local/share/nvim/swap/'
-# To use the system Python of OSX (v2.7), use `python2`
-# alias python='python3'
-# alias pip='pip3'
 alias rm-pyc='find . -name "*.pyc" -exec rm -rf {} \;'
 # https://vlaams-supercomputing-centrum-vscdocumentation.readthedocs-hosted.com/en/latest/access/using_ssh_agent.html
 alias start-ssh-agent='/usr/bin/ssh-agent -s > ~/.ssh-agent-environment; . ~/.ssh-agent-environment'
