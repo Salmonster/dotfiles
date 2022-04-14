@@ -122,8 +122,8 @@ map <Leader>t :TagsGenerate!<CR>
 "   it via a plugin setting; cf. :verbose set tags & https://stackoverflow.com/a/17688716/5282936
 "   If it becomes necessary, can be overridden in an 'after-directory'.
 " set tags = .git/tags,./tags,tags,~/tags
-let g:python_host_prog = '/Users/salman/.pyenv/shims/python'
-let g:python3_host_prog = '/Users/salman/.pyenv/shims/python3'
+let g:python_host_prog = expand('~/.pyenv/shims/python')
+let g:python3_host_prog = expand('~/.pyenv/shims/python3')
 
 " easymotion config
 let g:EasyMotion_do_mapping = 0 	" Disable default mappings
