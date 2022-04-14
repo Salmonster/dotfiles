@@ -1,15 +1,15 @@
 set t_Co=256
 set nocompatible 	" be iMproved
 
-" To view variable mappings, run => :echo variable1 [(variable2) (variable3) etc.]
+" To view variable mappings, run => :echo {variable1} [{variable2} {variable3} etc.]
+" To view option settings, run => :set {option}? ... cf. https://stackoverflow.com/a/12060528/5282936
+" To see where an option was set, run => :verbose set {option}
 
-" Remember to install https://github.com/universal-ctags/ctags for support of
-" tags across many languages.
-" If you see cross-project GoToDef jumps despite a local .git/tags file,
-" check that there's no /Users/salman/tags file screwing things up.
+" Remember to install https://github.com/universal-ctags/ctags for support of tags across many languages.
+" If you see cross-project GoToDef jumps despite a local .git/tags file, check that there's no ~/tags file screwing things up.
+" Activate a Python project's virtualenv before starting NeoVim to properly generate tags for it.
 
 " Run :checkhealth after installing all plugins.
-" Activate a Python project's virtualenv before starting NeoVim to properly generate tags for it.
 
 " vim-plug => https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
@@ -118,6 +118,10 @@ nnoremap <Leader>g :CtrlPTag<CR>
 let g:vim_tags_auto_generate = 0 " default is 1, generate on file-save
 " Activate a Python project's virtualenv before starting NeoVim to properly generate tags for it
 map <Leader>t :TagsGenerate!<CR>
+" vim-tags plugin sets 'tags' option for tags files to check in specified order without option to change
+"   it via a plugin setting; cf. :verbose set tags & https://stackoverflow.com/a/17688716/5282936
+"   If it becomes necessary, can be overridden in an 'after-directory'.
+" set tags = .git/tags,./tags,tags,~/tags
 let g:python_host_prog = '/Users/salman/.pyenv/shims/python'
 let g:python3_host_prog = '/Users/salman/.pyenv/shims/python3'
 
