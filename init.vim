@@ -2,12 +2,12 @@ set t_Co=256
 set nocompatible 	" be iMproved
 
 " To view variable mappings, run => :echo {variable1} [{variable2} {variable3} etc.]
+"   Set and unset variables with let/unlet.
 " To view option settings, run => :set {option}? ... cf. https://stackoverflow.com/a/12060528/5282936
 " To see where an option was set, run => :verbose set {option}
 
 " Remember to install https://github.com/universal-ctags/ctags for support of tags across many languages.
 " If you see cross-project GoToDef jumps despite a local .git/tags file, check that there's no ~/tags file screwing things up.
-" Activate a Python project's virtualenv before starting NeoVim to properly generate tags for it.
 
 " Run :checkhealth after installing all plugins.
 
@@ -87,6 +87,9 @@ nnoremap <Leader>q :%!python -m json.tool<CR>
 " ack.vim config
 cnoreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
+let g:ack_mappings = {
+      \  'v':  '<C-W><CR><C-W>L<C-W>p<C-W>J<C-W>p',
+      \ 'gv': '<C-W><CR><C-W>L<C-W>p<C-W>J' }
 
 
 " nerdcommenter config
@@ -98,6 +101,12 @@ let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
 "   enable trimming of trailing whitespace with uncomment command
 let g:NERDTrimTrailingWhitespace = 1
+
+
+" vim-go config
+"   show :GoTest output in a new term window; see :h gotest
+"   NOTE: output in vim isn't as verbose as running `go test` from the terminal
+let g:go_term_enabled = 1
 
 
 " vim-javascript config
@@ -115,8 +124,8 @@ let g:ctrlp_show_hidden = 1
 nnoremap <Leader>g :CtrlPTag<CR>
 
 " let g:vim_tags_ignore_files = [] " default is ignore files listed in VCS .ignore files
+"   Fyi '.env/' in .gitignore won't stop tags being generated from that dir but '.env' will!
 let g:vim_tags_auto_generate = 0 " default is 1, generate on file-save
-" Activate a Python project's virtualenv before starting NeoVim to properly generate tags for it
 map <Leader>t :TagsGenerate!<CR>
 " vim-tags plugin sets 'tags' option for tags files to check in specified order without option to change
 "   it via a plugin setting; cf. :verbose set tags & https://stackoverflow.com/a/17688716/5282936
