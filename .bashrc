@@ -2,6 +2,8 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export GOPATH=$HOME/Library/go
 export PATH="$GOPATH/bin:$PATH"
+# normally this is added to the login shell $PATH via /etc/paths.d/go but when running bash from zsh we need this shim
+export PATH="/usr/local/go/bin:$PATH"
 
 export HOMEBREW_NO_AUTO_UPDATE=1
 export GO111MODULE=on

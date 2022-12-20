@@ -8,7 +8,7 @@
   dump = cat-file -p
 [user]
   name = Salman Oskooi
-  email = soskooi@gmail.com
+  email = 13968572+Salmonster@users.noreply.github.com
 [filter "lfs"]
   clean = git-lfs clean %f
   smudge = git-lfs smudge %f
