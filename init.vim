@@ -235,7 +235,6 @@ set cursorline
 au Bufread,BufNewFile *.raml   setfiletype yaml
 au Filetype javascript setl et tabstop=4 shiftwidth=4
 
-
 " easy navigation between splits to save a keystroke
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -253,6 +252,10 @@ noremap k gk
 noremap gk k
 noremap <down> gj
 noremap <up> gk
+
+" swap ' and ` for easier jump-to-mark instead of jump-to-line-of-mark
+noremap ' `
+noremap ` '
 
 set splitbelow
 set splitright

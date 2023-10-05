@@ -20,5 +20,5 @@ ln -siv $(pwd)/salman.zsh-theme $ZSH/themes/salman.zsh-theme
 
 # Install NeoVim:
 # Download a tarball for a macos binary from https://github.com/neovim/neovim/releases,
-# copy its artifacts to /usr/local/ and then run the following command:
-ln -siv /usr/local/nvim-osx64/bin/nvim /usr/local/bin/nvim
+# copy or move its artifacts to /usr/local/ and then run the following command:
+ln -siv /usr/local/nvim-macos/bin/nvim /usr/local/bin/nvim
