@@ -122,8 +122,7 @@ zle -N zle-keymap-select
 # Kill the lag. This can result in issues with other terminal commands that depended on this delay. If you have issues try raising the delay.
 export KEYTIMEOUT=10
 
-# Personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes.
+# Personal aliases overriding those provided by oh-my-zsh libs, plugins, and themes.
 alias ls='ls -GFh'
 alias ll='ls -l'
 alias la='ls -a'
@@ -140,13 +139,12 @@ alias dvenv='source deactivate'
 alias vnv='. .env/bin/activate'
 alias dvnv='deactivate'
 
+# coc-tsserver extension to coc.nvim requires node runtime so enable it on nvim startup
+alias nvim='setup_nvm && nvim'
+
 alias gomg='cd $GOPATH/src/github.com/mailgun/'
 alias prj='cd ~/projects/'
 alias swapdir='cd ~/.local/share/nvim/swap/'
 alias rm-pyc='find . -name "*.pyc" -exec rm -rf {} \;'
 # https://vlaams-supercomputing-centrum-vscdocumentation.readthedocs-hosted.com/en/latest/access/using_ssh_agent.html
 alias start-ssh-agent='/usr/bin/ssh-agent -s > ~/.ssh-agent-environment; . ~/.ssh-agent-environment'
-
-# kill a zombie running on a socket
-#   usage  => `killport 3000`
-function killport { kill $(lsof -i :$@ | tail -n 1 | cut -f 3 -d ' '); }

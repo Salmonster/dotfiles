@@ -73,7 +73,3 @@ alias swapdir='cd ~/.local/share/nvim/swap/'
 alias rm-pyc='find . -name "*.pyc" -exec rm -rf {} \;'
 # https://vlaams-supercomputing-centrum-vscdocumentation.readthedocs-hosted.com/en/latest/access/using_ssh_agent.html
 alias start-ssh-agent='/usr/bin/ssh-agent -s > ~/.ssh-agent-environment; . ~/.ssh-agent-environment'
-
-# kill a zombie running on a socket
-#   usage  => `killport 3000`
-function killport { kill $(lsof -i :$@ | tail -n 1 | cut -f 3 -d ' '); }
