@@ -22,3 +22,10 @@ ln -siv $(pwd)/salman.zsh-theme $ZSH/themes/salman.zsh-theme
 # Download a tarball for a macos binary from https://github.com/neovim/neovim/releases,
 # copy or move its artifacts to /usr/local/ and then run the following command:
 ln -siv /usr/local/nvim-macos/bin/nvim /usr/local/bin/nvim
+
+# CoC vim plugin config:
+# Settings are saved in ~/.config/nvim/coc-settings.json
+# which can be opened with command :CocConfig. If it
+# gets to be long then version-control it in dotfiles
+# repo to symlink it as above. Otherwise set it like so:
+echo '{\n  "suggest.noselect": true\n}' > ~/.config/nvim/coc-settings.json
