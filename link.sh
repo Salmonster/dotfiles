@@ -24,6 +24,8 @@ ln -siv $(pwd)/salman.zsh-theme $ZSH/themes/salman.zsh-theme
 ln -siv /usr/local/nvim-macos/bin/nvim /usr/local/bin/nvim
 
 # CoC vim plugin config:
+# Normally the first word suggested is selected by default.
+# We disable that with the setting `"suggest.noselect": true`.
 # Settings are saved in ~/.config/nvim/coc-settings.json
 # which can be opened with command :CocConfig. If it
 # gets to be long then version-control it in dotfiles

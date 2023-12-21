@@ -30,7 +30,9 @@ Plug 'szw/vim-tags'
 Plug 'arithran/vim-delete-hidden-buffers'
 Plug 'vim-syntastic/syntastic'
 Plug 'pangloss/vim-javascript'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" The 'for' option here loads CoC only for .ts & .tsx files. Once loaded though
+" it'll be in effect for other file types too which changes word completion behavior.
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['typescript', 'typescriptreact']}
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'w0ng/vim-hybrid'
 Plug 'luochen1990/rainbow'
@@ -130,25 +132,7 @@ set updatetime=300
 " diagnostics appear/become resolved
 set signcolumn=yes
 
-" Use tab for trigger completion with characters ahead and navigate
-" NOTE: Normally the first word suggested is selected by default.
-" We disable that with the setting `"suggest.noselect": true` in the CoC
-" configuration file, ~/.config/nvim/coc-settings.json; open with :CocConfig.
-" See link.sh for versioning this config.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion
+" Use <c-space> to refresh completion list
 if has('nvim')
   inoremap <silent><expr> <c-space> coc#refresh()
 else
