@@ -139,9 +139,6 @@ alias dvenv='source deactivate'
 alias vnv='. .env/bin/activate'
 alias dvnv='deactivate'
 
-# coc-tsserver extension to coc.nvim requires node runtime so enable it on nvim startup
-alias nvim='setup_nvm && nvim'
-
 alias gomg='cd $GOPATH/src/github.com/mailgun/'
 alias prj='cd ~/projects/'
 alias swapdir='cd ~/.local/share/nvim/swap/'
