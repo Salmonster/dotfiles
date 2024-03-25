@@ -1,11 +1,23 @@
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/sbin
 export GOPATH=$HOME/Library/go
 export PATH="$PATH:$GOPATH/bin"
-export PATH="$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
-# normally this is added to the login shell $PATH via /etc/paths.d/go but when running bash from zsh we need this shim
-export PATH="/usr/local/go/bin:$PATH"
+export PATH="$PATH:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.yarn/bin"
+# Normally this is added to the login shell $PATH via /etc/paths.d/go but when running bash from zsh
+# we need this shim. UPDATE: no longer needed when managing Go with Brew.
+# export PATH="/usr/local/go/bin:$PATH"
 
+# Homebrew settings
 export HOMEBREW_NO_AUTO_UPDATE=1
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# pyenv (installed with brew so this section must come after Homebrew settings)
+# cf. https://github.com/pyenv/pyenv & https://github.com/pyenv/pyenv-virtualenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+# THESE EVALS MUST USE DOUBLE-QUOTES
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
 export GO111MODULE=on
 export GOPRIVATE="github.com/mailgun"
 export ETCD3_ENDPOINT=localhost:2379
@@ -57,13 +69,10 @@ alias la='ls -a'
 alias lla='ls -la'
 
 # python2 virtual envs
-# cf. https://github.com/pyenv/pyenv & https://github.com/pyenv/pyenv-virtualenv
-# THESE EVALS MUST USE DOUBLE-QUOTES
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 alias venv='pyenv activate ${PWD##*/}'
 alias dvenv='source deactivate'
-# py3 local dir venv
+
+# python3 local dir venv
 alias vnv='. .env/bin/activate'
 alias dvnv='deactivate'
 
