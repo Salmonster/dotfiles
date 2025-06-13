@@ -26,6 +26,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'easymotion/vim-easymotion'
 Plug 'mileszs/ack.vim'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'szw/vim-tags'
 Plug 'arithran/vim-delete-hidden-buffers'
 Plug 'vim-syntastic/syntastic'
@@ -104,6 +105,10 @@ let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
 "   enable trimming of trailing whitespace with uncomment command
 let g:NERDTrimTrailingWhitespace = 1
+
+
+" vim-airline config
+let g:airline_theme='tomorrow'
 
 
 " vim-go config
