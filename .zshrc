@@ -7,15 +7,6 @@ export PATH="$PATH:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.yarn/bin"
 export HOMEBREW_NO_AUTO_UPDATE=1
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# pyenv (installed with brew so this section must come after Homebrew settings)
-# cf. https://github.com/pyenv/pyenv & https://github.com/pyenv/pyenv-virtualenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-# THESE EVALS MUST USE DOUBLE-QUOTES
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-export GO111MODULE=on
 export GOPRIVATE="github.com/mailgun"
 export ETCD3_ENDPOINT=localhost:2379
 export EVENTBUS_ENDPOINT=localhost:19091
@@ -23,6 +14,30 @@ export MG_ENV=dev
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/$USER/.oh-my-zsh
+
+# Alias for golang profiles to analyze with pprof
+profile() {
+    INSTANCE=$1
+    if [ -z "$INSTANCE" ]; then
+        echo "USAGE: $0 INSTANCE"
+        exit 1
+    fi
+
+    OUT=$2
+    if [ -z "$OUT" ]; then
+        OUT=./tmp-profiling
+    fi
+
+    ORIG_DIR=$(pwd)
+    mkdir -p $OUT
+    cd $OUT
+    curl -o heap.profile $INSTANCE/_debug/pprof/heap
+    curl -o allocs.profile $INSTANCE/_debug/pprof/allocs
+    curl -o trace.profile $INSTANCE/_debug/pprof/trace
+    curl -o cpu.profile "$INSTANCE/_debug/pprof/profile?seconds=10"
+    cd $ORIG_DIR
+    echo "Profiles in $OUT"
+}
 
 export NVM_DIR="$HOME/.nvm"
 function setup_nvm {
@@ -84,6 +99,10 @@ HIST_STAMPS="mm/dd/yyyy"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
+# managed device with non-user, non-root file directory owners (e.g., mgadmin) may
+# require skipping the verification of insecure directories with this setting
+export ZSH_DISABLE_COMPFIX="true"
+
 DISABLE_AUTO_UPDATE="true"
 source $ZSH/oh-my-zsh.sh
 
@@ -139,14 +158,11 @@ alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 
-# python2 virtual envs
-alias venv='pyenv activate ${PWD##*/}'
-alias dvenv='source deactivate'
-
 # python3 local dir venv
 alias vnv='. .env/bin/activate'
 alias dvnv='deactivate'
 
+alias python='python3'
 alias gomg='cd $GOPATH/src/github.com/mailgun/'
 alias prj='cd ~/projects/'
 alias swapdir='cd ~/.local/share/nvim/swap/'

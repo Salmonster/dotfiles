@@ -186,12 +186,14 @@ nnoremap <Leader>g :CtrlPTag<CR>
 "   Fyi '.env/' in .gitignore won't stop tags being generated from that dir but '.env' will!
 let g:vim_tags_auto_generate = 0 " default is 1, generate on file-save
 map <Leader>t :TagsGenerate!<CR>
-" vim-tags plugin sets 'tags' option for tags files to check in specified order without option to change
-"   it via a plugin setting; cf. :verbose set tags & https://stackoverflow.com/a/17688716/5282936
-"   If it becomes necessary, can be overridden in an 'after-directory'.
-" set tags = .git/tags,./tags,tags,~/tags
-let g:python_host_prog = expand('~/.pyenv/shims/python')
-let g:python3_host_prog = expand('~/.pyenv/shims/python3')
+" vim-tags plugin has a 'tags' setting for which tags files to check in specified order without an
+"   option to change it, cf. `:verbose set tags` & https://stackoverflow.com/a/17688716/5282936
+"   If it becomes necessary, this can be overridden in an 'after-directory' or just run
+"   the next line manually:
+" set tags=.git/tags,./tags,tags,~/tags
+
+let g:python_host_prog = expand('/opt/homebrew/bin/python3')
+let g:python3_host_prog = expand('/opt/homebrew/bin/python3')
 
 " easymotion config
 let g:EasyMotion_do_mapping = 0 	" Disable default mappings
@@ -244,13 +246,21 @@ let g:rainbow_active = 1
 
 
 " Syntastic config
+"  start in passive mode: don't check on file save
+let g:syntastic_mode_map = { 'mode': 'passive' }
 "  toggle global active/passive mode
 map <Leader>c :SyntasticToggleMode<CR>
+" Disable automatic checks
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq   = 0
+let g:syntastic_check_on_write = 0
+" Run checks on demand
+nnoremap <leader>sc :SyntasticCheck<CR>
+nnoremap <leader>sr :SyntasticReset<CR>
 "  show plugin mode & any checker enabled on the current file
 map <Leader>i :SyntasticInfo<CR>
 let g:syntastic_go_checkers = ['gofmt']
-" add MyPy static type checker for Python
-let g:syntastic_python_checkers = ['python', 'pylint', 'mypy']
+let g:syntastic_python_checkers = ['python', 'pylint']
 " show syntax issues from all checkers
 let g:syntastic_aggregate_errors=1
 
