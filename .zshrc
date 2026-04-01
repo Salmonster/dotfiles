@@ -160,6 +160,7 @@ alias lla='ls -la'
 
 # python3 local dir venv
 alias vnv='. .env/bin/activate'
+alias venv='. .venv/bin/activate'
 alias dvnv='deactivate'
 
 alias python='python3'
