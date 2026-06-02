@@ -170,8 +170,9 @@ endfunction
 " ~~~ END TypeScript config
 
 
-" disable Perl support, avoid health check warning
+" disable Perl & Ruby support, avoid health check warnings
 let g:loaded_perl_provider = 0
+let g:loaded_ruby_provider = 0
 
 " ctrlp.vim config
 "        see :h ctrlp-mappings
@@ -192,8 +193,7 @@ map <Leader>t :TagsGenerate!<CR>
 "   the next line manually:
 " set tags=.git/tags,./tags,tags,~/tags
 
-let g:python_host_prog = expand('/opt/homebrew/bin/python3')
-let g:python3_host_prog = expand('/opt/homebrew/bin/python3')
+let g:python3_host_prog = '/usr/bin/python3'
 
 " easymotion config
 let g:EasyMotion_do_mapping = 0 	" Disable default mappings
