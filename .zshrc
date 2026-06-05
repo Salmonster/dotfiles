@@ -2,7 +2,10 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr
 export GOPATH=$HOME/Library/go
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.yarn/bin"
+# bob nvim version manager executables
 export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
+# uv python packaging binaries
+export PATH="$HOME/.local/bin:$PATH"
 
 # Homebrew settings
 export HOMEBREW_NO_AUTO_UPDATE=1
