@@ -241,8 +241,9 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 let NERDTreeShowHidden=1
 
 
-" rainbow parentheses & html bracket hierarchy color matching on
-let g:rainbow_active = 1
+" rainbow parentheses & html bracket hierarchy color matching off by default
+" toggle with :RainbowToggle
+let g:rainbow_active = 0
 
 
 " Syntastic config
