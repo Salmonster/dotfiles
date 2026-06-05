@@ -50,6 +50,13 @@ local config = {
       'folke/noice.nvim',
       enabled = false,
     },
+    {
+      'folke/snacks.nvim',
+      opts = {
+        -- disable slow scrolling (noticeable with `zz`, etc.)
+        scroll = { enabled = false },
+      },
+    },
 
     -- Add a plugin with dependencies
     --  fancy tab management...

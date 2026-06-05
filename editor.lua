@@ -1,3 +1,13 @@
+-- COSMIC INSTALLATION REQUIREMENTS
+-- Get bob nvim version manager to switch between nightly and stable versions.
+-- brew install bob uv ripgrep luarocks fd prettierd tree-sitter-cli
+-- bob install v0.12.2 nightly
+-- bob use nightly
+-- brew uninstall neovim
+-- uv tool install --upgrade pynvim
+-- Run :checkhealth
+-- :lua Snacks.picker.keymaps() shows all key bindings
+
 local g = vim.g
 local opt = vim.opt
 local map = require('cosmic.utils').set_keymap
