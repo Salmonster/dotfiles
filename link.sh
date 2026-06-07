@@ -9,6 +9,7 @@ ln -siv $(pwd)/.ansible.cfg ~/.ansible.cfg
 ln -siv $(pwd)/config.lua ~/.config/CosmicNvim/lua/cosmic/config/config.lua
 ln -siv $(pwd)/editor.lua ~/.config/CosmicNvim/lua/cosmic/config/editor.lua
 # ln -siv $(pwd)/init.vim ~/.config/nvim/init.vim
+mkdir -p ~/.config/ghostty && ln -siv $(pwd)/cmux/config ~/.config/ghostty/config
 ln -siv $(pwd)/salman.zsh-theme $ZSH/themes/salman.zsh-theme
 
 # The above commands will create $HOME level dotfiles as symlinks to files in this repo
