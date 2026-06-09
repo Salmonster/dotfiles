@@ -1,10 +1,11 @@
--- COSMIC INSTALLATION REQUIREMENTS
+-- COSMIC INSTALLATION REQUIREMENTS -- https://github.com/CosmicNvim/CosmicNvim 💫
 -- Get bob nvim version manager to switch between nightly and stable versions.
--- brew install bob uv ripgrep luarocks fd prettierd tree-sitter-cli
+-- brew install bob uv ripgrep luarocks fd prettierd tree-sitter-cli imagemagick gs
 -- bob install v0.12.2 nightly
 -- bob use nightly
 -- brew uninstall neovim
 -- uv tool install --upgrade pynvim
+-- npm install -g @mermaid-js/mermaid-cli; mmdc --version
 -- Run :checkhealth
 -- :lua Snacks.picker.keymaps() shows all key bindings
 
@@ -15,26 +16,24 @@ local map = require('cosmic.utils').set_keymap
 -- Keep Cosmic default leader (<space>)
 g.mapleader = ' '
 
--- Basic editor settings you wanted to preserve
-opt.clipboard:append('unnamedplus')
-opt.backspace = { 'indent', 'eol', 'start' }
-opt.hlsearch = false
+-- Basic editor settings
 opt.scrolloff = 5
-opt.completeopt:remove('preview')
-
-opt.number = true
--- Override `opt.rnu = true` from core editor config
-opt.relativenumber = false
-opt.wrap = true
-opt.textwidth = 0
+opt.hlsearch = false      -- turn off highlighting of search results, which is too eager on some commands
+opt.backspace = { 'indent', 'eol', 'start' }  -- allow backspacing over everything in insert mode
+opt.clipboard:append('unnamedplus') -- use system clipboard by default instead of '+' or '*' registers
+opt.completeopt:remove('preview')   -- disable preview window
+opt.number = true                   -- show line numbers
+opt.relativenumber = false          -- override `opt.rnu = true` from Cosmic core editor config
+opt.wrap = true                     -- enable soft line wrap
+opt.textwidth = 0                   -- disable hard line wrap automatic insertion of newlines
 opt.wrapmargin = 0
-opt.history = 50
-opt.ruler = true
-opt.showcmd = true
-opt.incsearch = true
-opt.inccommand = 'split'
-opt.autoindent = true
-opt.paste = false
+opt.history = 50                    -- keep 50 lines of command line history
+opt.ruler = true                    -- show the cursor position all the time
+opt.showcmd = true                  -- display incomplete commands
+opt.incsearch = true                -- do incremental searching
+opt.inccommand = 'split'            -- do incremental substitutions with preview split
+opt.autoindent = true               -- always set autoindenting on
+opt.paste = false                   -- avoid paste mode when copying from external sources
 opt.smartindent = true
 opt.expandtab = true
 opt.tabstop = 2
@@ -49,6 +48,8 @@ if vim.fn.has('mouse') == 1 then
   opt.mouse = 'a'
 end
 
+-- Prevent langmap option from applying to characters that result from a
+-- mapping.  If unset (default), this may break plugins.
 if vim.fn.has('langmap') == 1 and vim.fn.exists('+langnoremap') == 1 then
   opt.langnoremap = true
 end
@@ -136,16 +137,23 @@ vim.keymap.set({ 'n', 'o' }, 'g?', function()
   require('leap.remote').action { jumper = '?' }
 end)
 
--- Neovim terminal
+-- Neovim terminal shortcuts
 if vim.fn.has('nvim') == 1 then
   map('t', 'jk', [[<C-\><C-n>]], { desc = 'Exit terminal mode' })
   map('t', '<Esc>', [[<C-\><C-n>]], { desc = 'Exit terminal mode' })
 
-  -- Use vertical terminal instead of overlay buffer
+  -- Vertical terminal option
   map('n', '<leader>xv', ':vs term://zsh<CR>', { desc = 'Vertical terminal' })
 end
 
--- Autoread trigger
+-- Remove Cosmic key binding from terminal mode that breaks command line history scrolling
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    pcall(vim.keymap.del, "t", "<C-n>")
+  end,
+})
+
+-- Autoread trigger when changing buffers or coming back to vim
 vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter' }, {
   callback = function()
     vim.cmd('silent! !')
@@ -153,9 +161,34 @@ vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter' }, {
 })
 
 -- DiffOrig command
+-- You'll need to run :diffoff to get out of this view, and close the extra window.
 if vim.fn.exists(':DiffOrig') == 0 then
   vim.api.nvim_create_user_command('DiffOrig', function()
     vim.cmd('vert new | set bt=nofile | r ++edit # | 0d_ | diffthis')
     vim.cmd('wincmd p | diffthis')
   end, {})
 end
+
+local diagnostics_enabled = true
+
+-- Toggle LSP diagnostics
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    vim.diagnostic.enable(false, { bufnr = args.buf })
+  end,
+})
+
+vim.keymap.set('n', '<leader>ll', function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local enabled = vim.diagnostic.is_enabled({ bufnr = bufnr })
+  vim.diagnostic.enable(not enabled, { bufnr = bufnr })
+end, { desc = 'Toggle diagnostics for buffer' })
+
+-- less noisy by default
+return {
+  diagnostics = {
+    virtual_text = false,
+    underline = false,
+    signs = false,
+  },
+}

@@ -57,6 +57,24 @@ local config = {
         scroll = { enabled = false },
       },
     },
+    {
+    "saghen/blink.cmp",
+    opts = function(_, opts)
+      opts.keymap = opts.keymap or {}
+      opts.completion = opts.completion or {}
+      opts.completion.menu = opts.completion.menu or {}
+
+      -- Do not auto-show text completion menu
+      opts.completion.menu.auto_show = false
+      -- Enter should always be a newline
+      opts.keymap["<CR>"] = { "fallback" }
+      -- Manually open completion menu, then move through suggestions
+      opts.keymap["<C-n>"] = { "show", "select_next", "fallback" }
+      opts.keymap["<C-p>"] = { "show", "select_prev", "fallback" }
+
+      return opts
+    end,
+    },
 
     -- Add a plugin with dependencies
     --  fancy tab management...

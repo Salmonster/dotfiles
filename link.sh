@@ -5,10 +5,9 @@ ln -siv $(pwd)/.zshrc ~/.zshrc
 ln -siv $(pwd)/.bashrc ~/.bashrc
 ln -siv $(pwd)/.gitconfig ~/.gitconfig
 ln -siv $(pwd)/.ansible.cfg ~/.ansible.cfg
-# TODO: update when CosmicNvim takes over ~/.config/nvim/
-ln -siv $(pwd)/config.lua ~/.config/CosmicNvim/lua/cosmic/config/config.lua
-ln -siv $(pwd)/editor.lua ~/.config/CosmicNvim/lua/cosmic/config/editor.lua
 # ln -siv $(pwd)/init.vim ~/.config/nvim/init.vim
+ln -siv $(pwd)/config.lua ~/.config/nvim/lua/cosmic/config/config.lua
+ln -siv $(pwd)/editor.lua ~/.config/nvim/lua/cosmic/config/editor.lua
 mkdir -p ~/.config/ghostty && ln -siv $(pwd)/cmux/config ~/.config/ghostty/config
 ln -siv $(pwd)/salman.zsh-theme $ZSH/themes/salman.zsh-theme
 
@@ -19,7 +18,7 @@ ln -siv $(pwd)/salman.zsh-theme $ZSH/themes/salman.zsh-theme
 # You can later convert these symlinks to hard links to the same inodes, such as with:
 # 	ln -f "$(readlink <symlink>)" <symlink>
 
-# CoC vim plugin config:
+# CoC vim plugin config (for use with legacy neovim setup):
 # Normally the first word suggested is selected by default.
 # We disable that with the setting `"suggest.noselect": true`.
 # Settings are saved in ~/.config/nvim/coc-settings.json
