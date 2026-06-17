@@ -19,7 +19,7 @@ local config = {
       -- Override vtsls defaults from lspconfig and after/lsp
       vtsls = {
         -- Disable only automatic formatting on save for this server
-        format_on_save = false,
+        -- format_on_save = false,
         -- Disable all formatting from this server, including manual formatting
         -- formatting = false,
         flags = {
@@ -50,6 +50,8 @@ local config = {
       'folke/noice.nvim',
       enabled = false,
     },
+
+    -- Override a built-in plugin
     {
       'folke/snacks.nvim',
       opts = {
@@ -58,22 +60,52 @@ local config = {
       },
     },
     {
-    "saghen/blink.cmp",
-    opts = function(_, opts)
-      opts.keymap = opts.keymap or {}
-      opts.completion = opts.completion or {}
-      opts.completion.menu = opts.completion.menu or {}
+      'saghen/blink.cmp',
+      opts = function(_, opts)
+        opts.keymap = opts.keymap or {}
+        opts.completion = opts.completion or {}
+        opts.completion.menu = opts.completion.menu or {}
+        -- Text autocomplete...
+        -- Do not automatically show text completion menu
+        opts.completion.menu.auto_show = false
+        -- Enter should always be a newline
+        opts.keymap['<CR>'] = { 'fallback' }
+        -- Manually open completion menu, then move through suggestions
+        opts.keymap['<C-n>'] = { 'show', 'select_next', 'fallback' }
+        opts.keymap['<C-p>'] = { 'show', 'select_prev', 'fallback' }
+        opts.keymap['<Tab>'] = { 'accept', 'fallback' }
 
-      -- Do not auto-show text completion menu
-      opts.completion.menu.auto_show = false
-      -- Enter should always be a newline
-      opts.keymap["<CR>"] = { "fallback" }
-      -- Manually open completion menu, then move through suggestions
-      opts.keymap["<C-n>"] = { "show", "select_next", "fallback" }
-      opts.keymap["<C-p>"] = { "show", "select_prev", "fallback" }
+        return opts
+      end,
+    },
+    {
+      'stevearc/conform.nvim',
+      opts = function(_, opts)
+        local original = opts.format_on_save
 
-      return opts
-    end,
+        -- Increase max timeout for LSP format_on_save operation; default 500ms
+        opts.format_on_save = function(bufnr)
+          local result = original
+
+          if type(original) == 'function' then
+            result = original(bufnr)
+          end
+
+          if result == nil then
+            return nil
+          end
+
+          if type(result) ~= 'table' then
+            return result
+          end
+
+          result = vim.deepcopy(result)
+          result.timeout_ms = 3000
+          return result
+        end
+
+        return opts
+      end,
     },
 
     -- Add a plugin with dependencies
@@ -81,13 +113,6 @@ local config = {
     -- {
     --   'romgrk/barbar.nvim',
     --   dependencies = { 'nvim-tree/nvim-web-devicons' },
-
-    -- Override a built-in plugin
-    -- {
-    --   'nvim-treesitter/nvim-treesitter',
-    --   opts = {
-    --     ensure_installed = { 'lua', 'go', 'rust' },
-    --   },
     -- },
   },
 }
