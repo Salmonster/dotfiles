@@ -19,7 +19,7 @@ local config = {
       -- Override vtsls defaults from lspconfig and after/lsp
       vtsls = {
         -- Disable only automatic formatting on save for this server
-        -- format_on_save = false,
+        format_on_save = false,
         -- Disable all formatting from this server, including manual formatting
         -- formatting = false,
         flags = {
@@ -81,12 +81,21 @@ local config = {
     {
       'stevearc/conform.nvim',
       opts = function(_, opts)
+        opts = opts or {}
+
+        -- Hard-disable Conform formatters for python (ruff).
+        -- We have commit hooks per repo to handle this.
+        opts.formatters_by_ft = opts.formatters_by_ft or {}
+        opts.formatters_by_ft.python = {}
+
         local original = opts.format_on_save
-
-        -- Increase max timeout for LSP format_on_save operation; default 500ms
         opts.format_on_save = function(bufnr)
-          local result = original
+          -- Also disable format-on-save for python buffers.
+          if vim.bo[bufnr].filetype == "python" then
+            return nil
+          end
 
+          local result = original
           if type(original) == 'function' then
             result = original(bufnr)
           end
@@ -100,6 +109,7 @@ local config = {
           end
 
           result = vim.deepcopy(result)
+          -- Increase max timeout for LSP format_on_save operation; default 500ms
           result.timeout_ms = 3000
           return result
         end

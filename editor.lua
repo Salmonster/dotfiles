@@ -71,6 +71,8 @@ map('n', '<F2>', ':mksession! ~/vim_session<CR>', { desc = 'Write session' })
 map('n', '<F3>', ':source ~/vim_session<CR>', { desc = 'Load session' })
 map('n', '<F4>', ':let @+=expand("%")<CR>', { desc = 'Copy filename to clipboard' })
 map('n', '<F5>', ':DeleteHiddenBuffers<CR>', { desc = 'Delete hidden buffers' })
+-- show keyword definition options, formerly with tags but now with LSP
+map('n', 'g<C-]>', ':tselect <C-r><C-w><CR>')
 
 -- Filetype / editing autocmds
 vim.api.nvim_create_autocmd('FileType', {

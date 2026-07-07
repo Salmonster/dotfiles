@@ -18,12 +18,3 @@ mkdir -p ~/.claude && ln -siv $(pwd)/.claude/statusline-command.sh ~/.claude/sta
 # new link can occur.
 # You can later convert these symlinks to hard links to the same inodes, such as with:
 # 	ln -f "$(readlink <symlink>)" <symlink>
-
-# CoC vim plugin config (for use with legacy neovim setup):
-# Normally the first word suggested is selected by default.
-# We disable that with the setting `"suggest.noselect": true`.
-# Settings are saved in ~/.config/nvim/coc-settings.json
-# which can be opened with command :CocConfig from a TS/X file.
-# If it gets to be long then version-control it in dotfiles
-# repo to symlink it as above. Otherwise set it like so:
-# echo '{\n  "suggest.noselect": true\n}' > ~/.config/nvim/coc-settings.json
