@@ -10,7 +10,9 @@ ln -siv $(pwd)/config.lua ~/.config/nvim/lua/cosmic/config/config.lua
 ln -siv $(pwd)/editor.lua ~/.config/nvim/lua/cosmic/config/editor.lua
 ln -siv $(pwd)/salman.zsh-theme $ZSH/themes/salman.zsh-theme
 mkdir -p ~/.config/ghostty && ln -siv $(pwd)/cmux/config ~/.config/ghostty/config
+ln -siv $(pwd)/cmux/cmux.json ~/.config/cmux/cmux.json
 mkdir -p ~/.claude && ln -siv $(pwd)/.claude/statusline-command.sh ~/.claude/statusline-command.sh
+ln -siv $(pwd)/.claude/settings.json ~/.claude/settings.json
 
 # The above commands will create $HOME level dotfiles as symlinks to files in this repo
 # on whatever device this script is cloned and executed in.
