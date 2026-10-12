@@ -1,11 +1,10 @@
 -- COSMIC INSTALLATION REQUIREMENTS -- https://github.com/CosmicNvim/CosmicNvim 💫
 -- Get bob nvim version manager to switch between nightly and stable versions.
--- brew install bob uv ripgrep luarocks fd prettierd tree-sitter-cli imagemagick gs
--- bob install v0.12.2 nightly
+-- brew install bob uv ripgrep luarocks fd eslint_d prettierd tree-sitter-cli imagemagick gs
+-- bob install nightly [or v0.13.x]
 -- bob use nightly
--- brew uninstall neovim
 -- uv tool install --upgrade pynvim
--- npm install -g @mermaid-js/mermaid-cli; mmdc --version
+-- npm install -g oxlint oxfmt @mermaid-js/mermaid-cli; mmdc --version
 -- Run :checkhealth
 -- :lua Snacks.picker.keymaps() shows all key bindings
 
@@ -18,22 +17,22 @@ g.mapleader = ' '
 
 -- Basic editor settings
 opt.scrolloff = 5
-opt.hlsearch = false      -- turn off highlighting of search results, which is too eager on some commands
-opt.backspace = { 'indent', 'eol', 'start' }  -- allow backspacing over everything in insert mode
-opt.clipboard:append('unnamedplus') -- use system clipboard by default instead of '+' or '*' registers
-opt.completeopt:remove('preview')   -- disable preview window
-opt.number = true                   -- show line numbers
-opt.relativenumber = false          -- override `opt.rnu = true` from Cosmic core editor config
-opt.wrap = true                     -- enable soft line wrap
-opt.textwidth = 0                   -- disable hard line wrap automatic insertion of newlines
+opt.hlsearch = false                         -- turn off highlighting of search results, which is too eager on some commands
+opt.backspace = { 'indent', 'eol', 'start' } -- allow backspacing over everything in insert mode
+opt.clipboard:append('unnamedplus')          -- use system clipboard by default instead of '+' or '*' registers
+opt.completeopt:remove('preview')            -- disable preview window
+opt.number = true                            -- show line numbers
+opt.relativenumber = false                   -- override `opt.rnu = true` from Cosmic core editor config
+opt.wrap = true                              -- enable soft line wrap
+opt.textwidth = 0                            -- disable hard line wrap automatic insertion of newlines
 opt.wrapmargin = 0
-opt.history = 50                    -- keep 50 lines of command line history
-opt.ruler = true                    -- show the cursor position all the time
-opt.showcmd = true                  -- display incomplete commands
-opt.incsearch = true                -- do incremental searching
-opt.inccommand = 'split'            -- do incremental substitutions with preview split
-opt.autoindent = true               -- always set autoindenting on
-opt.paste = false                   -- avoid paste mode when copying from external sources
+opt.history = 50                             -- keep 50 lines of command line history
+opt.ruler = true                             -- show the cursor position all the time
+opt.showcmd = true                           -- display incomplete commands
+opt.incsearch = true                         -- do incremental searching
+opt.inccommand = 'split'                     -- do incremental substitutions with preview split
+opt.autoindent = true                        -- always set autoindenting on
+opt.paste = false                            -- avoid paste mode when copying from external sources
 opt.smartindent = true
 opt.expandtab = true
 opt.tabstop = 2
@@ -128,8 +127,8 @@ map('', '`', "'")
 
 -- Leap settings -- :h leap-mappings
 -- https://codeberg.org/andyg/leap.nvim
-vim.keymap.set({ 'n' },           ',', '<Plug>(leap-anywhere)')
-vim.keymap.set({ 'x', 'o' },      ',', '<Plug>(leap)')
+vim.keymap.set({ 'n' }, ',', '<Plug>(leap-anywhere)')
+vim.keymap.set({ 'x', 'o' }, ',', '<Plug>(leap)')
 -- Use CTRL-G and CTRL-T to move between '/' & '?' search matches
 -- without finishing the search
 vim.keymap.set({ 'n', 'o' }, 'g/', function()
@@ -173,6 +172,9 @@ end
 
 local diagnostics_enabled = true
 
+-- Preserve legacy vi/vim hyphen (-) behavior
+vim.keymap.set('n', '-', '-', { remap = false, desc = 'Previous line, first nonblank' })
+
 -- Toggle LSP diagnostics
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
@@ -194,3 +196,4 @@ return {
     signs = false,
   },
 }
+-- DON'T ADD SETTINGS AFTER RETURNING

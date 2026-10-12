@@ -1,9 +1,6 @@
 -- Override Cosmic configuration options
 
 local config = {
-  -- See :h nvim_open_win for possible border options
-  border = 'rounded',
-
   -- LSP settings
   lsp = {
     -- Enable/disable inlay hints
@@ -15,19 +12,6 @@ local config = {
     servers = {
       -- Enable rust_analyzer with its lspconfig and after/lsp defaults
       rust_analyzer = true,
-
-      -- Override vtsls defaults from lspconfig and after/lsp
-      vtsls = {
-        -- Disable only automatic formatting on save for this server
-        format_on_save = false,
-        -- Disable all formatting from this server, including manual formatting
-        -- formatting = false,
-        flags = {
-          debounce_text_changes = 150,
-        },
-        on_attach = function(client, bufnr) end,
-        settings = {},
-      },
     },
   },
 
@@ -37,8 +21,8 @@ local config = {
   -- Plugin management (lazy.nvim)
   plugins = {
 
-    { 'mileszs/ack.vim', lazy = false },
-    { 'arithran/vim-delete-hidden-buffers', cmd = 'DeleteHiddenBuffers' },
+    { 'mileszs/ack.vim',                          lazy = false },
+    { 'arithran/vim-delete-hidden-buffers',       cmd = 'DeleteHiddenBuffers' },
     { 'https://codeberg.org/andyg/leap.nvim.git', lazy = false },
 
     -- Disable a built-in plugin

@@ -14,15 +14,26 @@
       "Grep",
       "WebFetch",
       "WebSearch"
-    ]
+    ],
+    "defaultMode": "auto"
   },
-  "model": "opus",
+  "model": "sonnet",
   "statusLine": {
     "type": "command",
     "command": "sh /Users/salosk/.claude/statusline-command.sh"
   },
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true
+  },
+  "effortLevel": "high",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "medium"
+    }
+  },
   "promptSuggestionEnabled": false,
   "awaySummaryEnabled": false,
+  "askUserQuestionTimeout": "never",
   "theme": "dark",
-  "askUserQuestionTimeout": "never"
+  "switchModelsOnFlag": true
 }
