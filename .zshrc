@@ -163,7 +163,7 @@ alias la='ls -a'
 alias lla='ls -la'
 
 # python3 local dir venv
-alias vnv='. .env/bin/activate'
+alias vnv='eval $(poetry env activate)'
 alias venv='. .venv/bin/activate'
 alias dvnv='deactivate'
 
